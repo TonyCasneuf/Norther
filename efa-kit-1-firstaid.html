@@ -50,7 +50,7 @@
     }
 
     .checkbox-cell {
-      width: 80px;
+      width: 60px;
       text-align: center;
       vertical-align: middle;
     }
@@ -63,7 +63,7 @@
     .location-cell {
       font-weight: bold;
       color: #333;
-      width: 80px;
+      width: 70px;
       text-align: center;
     }
 
@@ -83,13 +83,12 @@
 
     .expiry-cell {
       text-align: left;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .expiry-label {
+      display: inline;
       white-space: nowrap;
+      margin-right: 4px;
     }
 
     .expiry-input {
@@ -97,7 +96,7 @@
       font-size: 14px;
       border: 1px solid #1e73be;
       border-radius: 4px;
-      width: 120px;
+      width: 110px;
     }
 
     .expiry-input.expired {
@@ -111,29 +110,9 @@
       background-color: #f0fdf4;
     }
 
-    .expiry-display {
-      font-weight: 600;
-      min-width: 60px;
-      color: #333;
-    }
-
-    .expiry-display.expired {
-      color: #991b1b;
-    }
-
-    .expiry-display.valid {
-      color: #166534;
-    }
-
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
-      }
-      
-      .expiry-cell {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
       }
     }
   </style>
@@ -170,7 +149,6 @@
           <td class="expiry-cell">
             <span class="expiry-label">Expiry:</span>
             <input type="date" class="expiry-input item-expiry" value="2028-05-31" />
-            <span class="expiry-display item-expiry-display"></span>
           </td>
         </tr>
 
@@ -195,7 +173,6 @@
           <td class="expiry-cell">
             <span class="expiry-label">Expiry:</span>
             <input type="date" class="expiry-input item-expiry" value="2027-11-15" />
-            <span class="expiry-display item-expiry-display"></span>
           </td>
         </tr>
       </tbody>
@@ -215,30 +192,15 @@
       return date < today;
     }
 
-    // Function to format date as DD-MM-YY
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      const day = String(date.getDate()).padStart(2, '0');
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const year = String(date.getFullYear()).slice(-2);
-      return `${day}-${month}-${year}`;
-    }
-
     // Function to update expiry styling
     function updateExpiryStyle(input) {
       const itemNum = input.closest('tr').getAttribute('data-item');
       const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
       const isExpired = isDateExpired(input.value);
-      const display = input.closest('.expiry-cell').querySelector('.item-expiry-display');
-
-      // Update display text
-      display.textContent = formatDate(input.value);
 
       if (isExpired) {
         input.classList.add('expired');
         input.classList.remove('valid');
-        display.classList.add('expired');
-        display.classList.remove('valid');
         rows.forEach(row => {
           row.classList.add('expired');
           row.classList.remove('checked');
@@ -246,8 +208,6 @@
       } else {
         input.classList.add('valid');
         input.classList.remove('expired');
-        display.classList.add('valid');
-        display.classList.remove('expired');
         rows.forEach(row => {
           row.classList.remove('expired');
         });

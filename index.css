@@ -128,29 +128,139 @@ header h2{
     font-size:12px;
     color:#666;
 }
+.card{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    max-width:950px;
+    margin:auto;
+}
+
 .tabs{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:25px;
+    gap:8px;
+    margin-bottom:20px;
 }
 
 .tab{
     background:#e5e5e5;
     color:#0057A8;
     border:none;
-    padding:12px 20px;
-    border-radius:10px;
-    font-weight:bold;
+    border-radius:15px;
+    padding:8px 15px;
     cursor:pointer;
-}
-
-.tab:hover{
-    background:#d5d5d5;
+    font-weight:bold;
 }
 
 .tab.active{
     background:#0057A8;
     color:white;
 }
-``
+
+.pouch-title{
+    color:#0057A8;
+    margin-bottom:20px;
+}
+
+.pouch-header{
+    display:grid;
+    grid-template-columns:70px 2fr 140px 70px 150px;
+    gap:10px;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    border-bottom:2px solid #0057A8;
+    color:#0057A8;
+    font-weight:bold;
+}
+
+.pouch-item{
+    display:grid;
+    grid-template-columns:70px 2fr 140px 70px 150px;
+    gap:10px;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.present{
+    width:22px;
+    height:22px;
+}
+
+.check-column{
+    display:flex;
+    justify-content:center;
+}
+
+.item-name{
+    color:#0057A8;
+    font-weight:600;
+    font-size:16px;
+}
+
+.item-number,
+.item-qty{
+    color:#444;
+}
+
+.item-expiry input{
+    width:140px;
+    padding:5px;
+}
+
+@media (max-width: 768px){
+
+    .pouch-header{
+        display:none;
+    }
+
+    .pouch-item{
+        display:block;
+        padding:15px;
+        margin-bottom:15px;
+        border:1px solid #ddd;
+        border-radius:12px;
+        background:#fafafa;
+    }
+
+    .check-column{
+        justify-content:flex-start;
+        margin-bottom:10px;
+    }
+
+    .item-name{
+        margin-bottom:10px;
+        font-size:18px;
+    }
+
+    .item-number,
+    .item-qty,
+    .item-expiry{
+        display:block;
+        margin-bottom:8px;
+    }
+
+    .item-number::before{
+        content:"Item Number: ";
+        font-weight:bold;
+    }
+
+    .item-qty::before{
+        content:"Qty: ";
+        font-weight:bold;
+    }
+
+    .item-expiry::before{
+        content:"Expiry: ";
+        font-weight:bold;
+        display:block;
+        margin-bottom:5px;
+    }
+
+    .item-expiry input{
+        width:100%;
+        box-sizing:border-box;
+    }
+}

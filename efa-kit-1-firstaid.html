@@ -36,23 +36,53 @@
     }
 
     .item-row {
-      transition: box-shadow 0.3s ease;
+      transition: all 0.3s ease;
     }
 
-    .item-row.checked {
-      box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.6), 
-                  0 0 15px rgba(76, 175, 80, 0.4);
+    /* Option 3: Checkmark icon style */
+    .item-row.checked-option3 {
+      background-color: #f0fdf4;
+    }
+
+    .item-row.checked-option3 td {
+      color: #166534;
+    }
+
+    /* Option 5: Green left border + subtle background */
+    .item-row.checked-option5 {
+      background-color: #f0fdf4;
+      border-left: 4px solid #22c55e;
     }
 
     .checkbox-cell {
       width: 80px;
       text-align: center;
       vertical-align: middle;
+      position: relative;
     }
 
     .checkbox-cell input[type="checkbox"] {
       transform: scale(1.4);
       cursor: pointer;
+    }
+
+    .checkmark {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: #22c55e;
+      font-weight: bold;
+    }
+
+    .item-row.checked-option3 .checkmark {
+      display: block;
+    }
+
+    .item-row.checked-option3 input[type="checkbox"] {
+      display: none;
     }
 
     .location-cell {
@@ -106,10 +136,12 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Example item: Row 1 - Checkbox, Location & Name -->
-        <tr class="item-row">
+        <!-- ITEM 1: Option 3 - Checkmark icon style -->
+        <!-- Row 1 - Checkbox, Location & Name -->
+        <tr class="item-row" data-item="1">
           <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
+            <input type="checkbox" class="item-checkbox" data-option="3" />
+            <span class="checkmark">✓</span>
           </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
@@ -118,18 +150,19 @@
           <td class="name-cell">Sterile gauze pads</td>
         </tr>
         <!-- Row 2 - Qty -->
-        <tr class="item-row">
+        <tr class="item-row" data-item="1">
           <td class="qty-cell">Qty: 10</td>
         </tr>
         <!-- Row 3 - Expiry Date -->
-        <tr class="item-row">
+        <tr class="item-row" data-item="1">
           <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2028-05-31" /></td>
         </tr>
 
-        <!-- Second item: Row 1 - Checkbox, Location & Name -->
-        <tr class="item-row">
+        <!-- ITEM 2: Option 5 - Green left border + subtle background -->
+        <!-- Row 1 - Checkbox, Location & Name -->
+        <tr class="item-row" data-item="2">
           <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
+            <input type="checkbox" class="item-checkbox" data-option="5" />
           </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
@@ -138,11 +171,11 @@
           <td class="name-cell">Adhesive bandages</td>
         </tr>
         <!-- Row 2 - Qty -->
-        <tr class="item-row">
+        <tr class="item-row" data-item="2">
           <td class="qty-cell">Qty: 25</td>
         </tr>
         <!-- Row 3 - Expiry Date -->
-        <tr class="item-row">
+        <tr class="item-row" data-item="2">
           <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2027-11-15" /></td>
         </tr>
       </tbody>
@@ -155,22 +188,25 @@
     
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', function() {
+        const option = this.getAttribute('data-option');
+        const itemNum = this.closest('tr').getAttribute('data-item');
+        
         // Get all 3 rows of this item
-        let currentRow = this.closest('tr');
-        const rows = [currentRow];
+        const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
         
-        // Get the next 2 sibling rows
-        let nextRow = currentRow.nextElementSibling;
-        if (nextRow) rows.push(nextRow);
-        nextRow = nextRow ? nextRow.nextElementSibling : null;
-        if (nextRow) rows.push(nextRow);
-        
-        // Toggle the 'checked' class on all rows of this item
+        // Toggle the appropriate class based on option
         rows.forEach(row => {
           if (this.checked) {
-            row.classList.add('checked');
+            if (option === '3') {
+              row.classList.add('checked-option3');
+              row.classList.remove('checked-option5');
+            } else if (option === '5') {
+              row.classList.add('checked-option5');
+              row.classList.remove('checked-option3');
+            }
           } else {
-            row.classList.remove('checked');
+            row.classList.remove('checked-option3');
+            row.classList.remove('checked-option5');
           }
         });
       });

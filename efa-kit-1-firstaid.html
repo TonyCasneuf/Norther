@@ -41,6 +41,8 @@ header h2{
     border-radius:15px;
     padding:25px;
     box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    max-width:900px;
+    margin:auto;
 }
 
 .pouch-title{
@@ -49,7 +51,33 @@ header h2{
     margin-bottom:20px;
 }
 
+.pouch-header{
+    display:grid;
+    grid-template-columns:70px 2fr 140px 60px 140px;
+    gap:10px;
+    font-weight:bold;
+    color:#0057A8;
+    padding-bottom:10px;
+    margin-bottom:15px;
+    border-bottom:2px solid #0057A8;
+}
 
+.pouch-item{
+    display:grid;
+    grid-template-columns:70px 2fr 140px 60px 140px;
+    gap:10px;
+    align-items:center;
+    padding:15px 0;
+    margin-bottom:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.present{
+    appearance:auto;
+    width:22px;
+    height:22px;
+    cursor:pointer;
+}
 
 .pouch-item:last-child{
     border-bottom:none;
@@ -61,11 +89,12 @@ header h2{
 }
 
 
-
 .item-name{
-    font-weight:bold;
+    font-weight:600;
+    font-size:16px;
     color:#0057A8;
 }
+
 
 .item-number,
 .item-qty{

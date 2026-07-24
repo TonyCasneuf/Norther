@@ -30,21 +30,16 @@
 
     th {
       background: #f7f7f7;
-      text-align: left;
+      text-align: center;
+      font-weight: bold;
+      height: 60px;
+      vertical-align: middle;
     }
 
     .checkbox-cell {
       width: 60px;
       text-align: center;
       vertical-align: middle;
-    }
-
-    .checkbox-label {
-      display: block;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 4px;
-      color: #333;
     }
 
     .checkbox-cell input[type="checkbox"] {
@@ -66,6 +61,15 @@
 
     .name-cell {
       font-weight: 600;
+      text-align: left;
+    }
+
+    .qty-cell {
+      text-align: left;
+    }
+
+    .expiry-cell {
+      text-align: left;
     }
 
     .expiry-input {
@@ -90,7 +94,7 @@
         <tr>
           <th>Checked</th>
           <th>Location</th>
-          <th></th>
+          <th>Item Details</th>
         </tr>
       </thead>
       <tbody>
@@ -107,11 +111,11 @@
         </tr>
         <!-- Row 2 - Qty -->
         <tr>
-          <td>Qty: 10</td>
+          <td class="qty-cell">Qty: 10</td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr>
-          <td>Expiry: <input type="date" class="expiry-input" value="2028-05-31" /></td>
+          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2028-05-31" /></td>
         </tr>
 
         <!-- Second item: Row 1 - Checkbox, Location & Name -->
@@ -127,11 +131,11 @@
         </tr>
         <!-- Row 2 - Qty -->
         <tr>
-          <td>Qty: 25</td>
+          <td class="qty-cell">Qty: 25</td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr>
-          <td>Expiry: <input type="date" class="expiry-input" value="2027-11-15" /></td>
+          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2027-11-15" /></td>
         </tr>
       </tbody>
     </table>

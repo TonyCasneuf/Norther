@@ -67,6 +67,11 @@
       color: #333;
     }
 
+    .item-details {
+      font-size: 12px;
+      color: #666;
+    }
+
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
@@ -88,38 +93,40 @@
           <th></th>
           <th>Location</th>
           <th>Name</th>
-          <th>Item number / Qty / Expiry / Remark</th>
+          <th>Item No.</th>
+          <th>Qty</th>
+          <th>Expiry</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Example item: checkbox spanning three rows -->
+        <!-- Example item -->
         <tr>
-          <td class="checkbox-cell">
+          <td class="checkbox-cell" rowspan="2">
             <input type="checkbox" />
           </td>
-          <td class="location">Pouch A</td>
-          <td>Sterile gauze pads</td>
-          <td>
-            Item No.: 123456789<br />
-            Qty: 10<br />
-            Expiry Date: 2028-05-31<br />
-            Remark: Replace when seal is broken
-          </td>
+          <td class="location" rowspan="2">Pouch A</td>
+          <td rowspan="2">Sterile gauze pads</td>
+          <td>123456789</td>
+          <td>10</td>
+          <td>2028-05-31</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="item-details"></td>
         </tr>
 
-        <!-- Duplicate this block for more items -->
+        <!-- Second item -->
         <tr>
-          <td class="checkbox-cell">
+          <td class="checkbox-cell" rowspan="2">
             <input type="checkbox" />
           </td>
-          <td class="location">Pouch A</td>
-          <td>Adhesive bandages</td>
-          <td>
-            Item No.: 987654321<br />
-            Qty: 25<br />
-            Expiry Date: 2027-11-15<br />
-            Remark: Check packaging integrity
-          </td>
+          <td class="location" rowspan="2">Pouch A</td>
+          <td rowspan="2">Adhesive bandages</td>
+          <td>987654321</td>
+          <td>25</td>
+          <td>2027-11-15</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="item-details"></td>
         </tr>
       </tbody>
     </table>

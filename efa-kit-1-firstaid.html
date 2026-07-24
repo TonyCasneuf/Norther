@@ -95,7 +95,7 @@
     .location-cell {
       font-weight: bold;
       color: #333;
-      width: 40px;
+      width: 100px;
     }
 
     .name-cell {
@@ -160,7 +160,7 @@
           <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" />
           </td>
-          <td class="location-cell" rowspan="3">A</td>
+          <td class="location-cell" rowspan="3">Pouch A</td>
           <td class="name-cell" colspan="3">Sterile gauze pads</td>
         </tr>
         <!-- Row 2 - Item No & Qty -->
@@ -171,9 +171,7 @@
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="data-row">
-          <td colspan="3" class="item-details">
-            Expiry: <span class="expiry-cell">2028-05-31</span>
-          </td>
+          <td colspan="3">Expiry: <span class="expiry-cell" data-expiry="2028-05-31">2028-05-31</span></td>
         </tr>
 
         <!-- Second item: Row 1 - Location & Name -->
@@ -181,7 +179,7 @@
           <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" />
           </td>
-          <td class="location-cell" rowspan="3">A</td>
+          <td class="location-cell" rowspan="3">Pouch A</td>
           <td class="name-cell" colspan="3">Adhesive bandages</td>
         </tr>
         <!-- Row 2 - Item No & Qty -->
@@ -192,9 +190,7 @@
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="data-row">
-          <td colspan="3" class="item-details">
-            Expiry: <span class="expiry-cell">2027-11-15</span>
-          </td>
+          <td colspan="3">Expiry: <span class="expiry-cell" data-expiry="2027-11-15">2027-11-15</span></td>
         </tr>
       </tbody>
     </table>
@@ -204,25 +200,27 @@
     function searchTable() {
       const searchInput = document.getElementById('searchInput').value.toLowerCase();
       const rows = document.querySelectorAll('#inventoryTable tbody tr.data-row');
-
-      rows.forEach((row) => {
-        const expiryCell = row.querySelector('.expiry-cell');
-        const nameCell = row.querySelector('.name-cell');
+      
+      // Group rows by item (3 rows per item)
+      for (let i = 0; i < rows.length; i += 3) {
+        const row1 = rows[i];
+        const row2 = rows[i + 1];
+        const row3 = rows[i + 2];
         
-        let matches = false;
+        if (!row3) break;
         
-        if (expiryCell) {
-          const expiry = expiryCell.textContent.toLowerCase();
-          matches = expiry.includes(searchInput);
-        }
+        const expiryCell = row3.querySelector('.expiry-cell');
+        const expiry = expiryCell ? expiryCell.getAttribute('data-expiry').toLowerCase() : '';
+        const nameCell = row1.querySelector('.name-cell');
+        const name = nameCell ? nameCell.textContent.toLowerCase() : '';
         
-        if (!matches && nameCell) {
-          const name = nameCell.textContent.toLowerCase();
-          matches = name.includes(searchInput);
-        }
+        const matches = expiry.includes(searchInput) || name.includes(searchInput);
         
-        row.classList.toggle('hidden', searchInput && !matches);
-      });
+        // Show or hide all 3 rows of this item
+        row1.classList.toggle('hidden', searchInput && !matches);
+        row2.classList.toggle('hidden', searchInput && !matches);
+        row3.classList.toggle('hidden', searchInput && !matches);
+      }
     }
 
     function clearSearch() {

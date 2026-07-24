@@ -39,17 +39,7 @@
       transition: all 0.3s ease;
     }
 
-    /* Option 3: Checkmark icon style */
-    .item-row.checked-option3 {
-      background-color: #f0fdf4;
-    }
-
-    .item-row.checked-option3 td {
-      color: #166534;
-    }
-
-    /* Option 5: Green left border + subtle background */
-    .item-row.checked-option5 {
+    .item-row.checked {
       background-color: #f0fdf4;
       border-left: 4px solid #22c55e;
     }
@@ -58,31 +48,11 @@
       width: 80px;
       text-align: center;
       vertical-align: middle;
-      position: relative;
     }
 
     .checkbox-cell input[type="checkbox"] {
       transform: scale(1.4);
       cursor: pointer;
-    }
-
-    .checkmark {
-      display: none;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 20px;
-      color: #22c55e;
-      font-weight: bold;
-    }
-
-    .item-row.checked-option3 .checkmark {
-      display: block;
-    }
-
-    .item-row.checked-option3 input[type="checkbox"] {
-      display: none;
     }
 
     .location-cell {
@@ -136,12 +106,11 @@
         </tr>
       </thead>
       <tbody>
-        <!-- ITEM 1: Option 3 - Checkmark icon style -->
+        <!-- ITEM 1 -->
         <!-- Row 1 - Checkbox, Location & Name -->
         <tr class="item-row" data-item="1">
           <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" data-option="3" />
-            <span class="checkmark">✓</span>
+            <input type="checkbox" class="item-checkbox" />
           </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
@@ -158,11 +127,11 @@
           <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2028-05-31" /></td>
         </tr>
 
-        <!-- ITEM 2: Option 5 - Green left border + subtle background -->
+        <!-- ITEM 2 -->
         <!-- Row 1 - Checkbox, Location & Name -->
         <tr class="item-row" data-item="2">
           <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" data-option="5" />
+            <input type="checkbox" class="item-checkbox" />
           </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
@@ -188,25 +157,17 @@
     
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', function() {
-        const option = this.getAttribute('data-option');
         const itemNum = this.closest('tr').getAttribute('data-item');
         
         // Get all 3 rows of this item
         const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
         
-        // Toggle the appropriate class based on option
+        // Toggle the 'checked' class on all rows of this item
         rows.forEach(row => {
           if (this.checked) {
-            if (option === '3') {
-              row.classList.add('checked-option3');
-              row.classList.remove('checked-option5');
-            } else if (option === '5') {
-              row.classList.add('checked-option5');
-              row.classList.remove('checked-option3');
-            }
+            row.classList.add('checked');
           } else {
-            row.classList.remove('checked-option3');
-            row.classList.remove('checked-option5');
+            row.classList.remove('checked');
           }
         });
       });

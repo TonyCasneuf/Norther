@@ -67,11 +67,6 @@
       color: #333;
     }
 
-    .label {
-      font-weight: bold;
-      width: 120px;
-    }
-
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
@@ -91,25 +86,19 @@
       <thead>
         <tr>
           <th></th>
-          <th>Field</th>
-          <th>Value</th>
+          <th>Location</th>
+          <th>Name</th>
+          <th>Item number / Qty / Expiry / Remark</th>
         </tr>
       </thead>
       <tbody>
         <!-- Example item: checkbox spanning three rows -->
         <tr>
-          <td class="checkbox-cell" rowspan="3">
+          <td class="checkbox-cell">
             <input type="checkbox" />
           </td>
-          <td class="label">Location</td>
           <td class="location">Pouch A</td>
-        </tr>
-        <tr>
-          <td class="label">Name</td>
           <td>Sterile gauze pads</td>
-        </tr>
-        <tr>
-          <td class="label">Item number / Qty / Expiry / Remark</td>
           <td>
             Item No.: 123456789<br />
             Qty: 10<br />
@@ -120,18 +109,11 @@
 
         <!-- Duplicate this block for more items -->
         <tr>
-          <td class="checkbox-cell" rowspan="3">
+          <td class="checkbox-cell">
             <input type="checkbox" />
           </td>
-          <td class="label">Location</td>
           <td class="location">Pouch A</td>
-        </tr>
-        <tr>
-          <td class="label">Name</td>
           <td>Adhesive bandages</td>
-        </tr>
-        <tr>
-          <td class="label">Item number / Qty / Expiry / Remark</td>
           <td>
             Item No.: 987654321<br />
             Qty: 25<br />

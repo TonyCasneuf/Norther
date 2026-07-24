@@ -1,25 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>First Aid Kit – Inventory</title>
+  <title>First Aid Kit – EFA Kit 1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-    }
-
     .container {
       padding: 12px;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
 
     th, td {
@@ -29,7 +28,8 @@
     }
 
     th {
-      background: #f7f7f7;
+      background: #0057a8;
+      color: white;
       text-align: center;
       font-weight: bold;
       vertical-align: middle;
@@ -110,6 +110,11 @@
       background-color: #f0fdf4;
     }
 
+    .no-expiry {
+      color: #888;
+      font-style: italic;
+    }
+
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
@@ -118,6 +123,12 @@
   </style>
 </head>
 <body>
+
+<header>
+  <h1>NORTHER</h1>
+  <h2>EFA KIT 1 – FIRST AID KIT</h2>
+</header>
+
   <div class="container">
     <table id="inventoryTable">
       <thead>
@@ -128,8 +139,8 @@
         </tr>
       </thead>
       <tbody>
+
         <!-- ITEM 1 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
         <tr class="item-row" data-item="1">
           <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" class="item-checkbox" />
@@ -140,11 +151,9 @@
           </td>
           <td class="name-cell">Sterile gauze pads</td>
         </tr>
-        <!-- Row 2 - Qty -->
         <tr class="item-row" data-item="1">
           <td class="qty-cell">Qty: 10</td>
         </tr>
-        <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="1">
           <td class="expiry-cell">
             <span class="expiry-label">Expiry:</span>
@@ -153,7 +162,6 @@
         </tr>
 
         <!-- ITEM 2 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
         <tr class="item-row" data-item="2">
           <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" class="item-checkbox" />
@@ -162,29 +170,344 @@
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
-          <td class="name-cell">Adhesive bandages</td>
+          <td class="name-cell">Adhesive bandages (assorted)</td>
         </tr>
-        <!-- Row 2 - Qty -->
         <tr class="item-row" data-item="2">
           <td class="qty-cell">Qty: 25</td>
         </tr>
-        <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="2">
           <td class="expiry-cell">
             <span class="expiry-label">Expiry:</span>
             <input type="date" class="expiry-input item-expiry" value="2027-11-15" />
           </td>
         </tr>
+
+        <!-- ITEM 3 -->
+        <tr class="item-row" data-item="3">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">A</span>
+          </td>
+          <td class="name-cell">Roller bandage (7.5 cm)</td>
+        </tr>
+        <tr class="item-row" data-item="3">
+          <td class="qty-cell">Qty: 4</td>
+        </tr>
+        <tr class="item-row" data-item="3">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2029-01-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 4 -->
+        <tr class="item-row" data-item="4">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">A</span>
+          </td>
+          <td class="name-cell">Triangular bandage</td>
+        </tr>
+        <tr class="item-row" data-item="4">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="4">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2029-03-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 5 -->
+        <tr class="item-row" data-item="5">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">A</span>
+          </td>
+          <td class="name-cell">Wound closure strips</td>
+        </tr>
+        <tr class="item-row" data-item="5">
+          <td class="qty-cell">Qty: 10</td>
+        </tr>
+        <tr class="item-row" data-item="5">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-08-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 6 -->
+        <tr class="item-row" data-item="6">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">B</span>
+          </td>
+          <td class="name-cell">Large wound dressing</td>
+        </tr>
+        <tr class="item-row" data-item="6">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="6">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-06-30" />
+          </td>
+        </tr>
+
+        <!-- ITEM 7 -->
+        <tr class="item-row" data-item="7">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">B</span>
+          </td>
+          <td class="name-cell">Burn dressing (10×10 cm)</td>
+        </tr>
+        <tr class="item-row" data-item="7">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="7">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-09-30" />
+          </td>
+        </tr>
+
+        <!-- ITEM 8 -->
+        <tr class="item-row" data-item="8">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">B</span>
+          </td>
+          <td class="name-cell">Antiseptic wipes</td>
+        </tr>
+        <tr class="item-row" data-item="8">
+          <td class="qty-cell">Qty: 20</td>
+        </tr>
+        <tr class="item-row" data-item="8">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2027-12-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 9 -->
+        <tr class="item-row" data-item="9">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">B</span>
+          </td>
+          <td class="name-cell">Disposable gloves (pairs)</td>
+        </tr>
+        <tr class="item-row" data-item="9">
+          <td class="qty-cell">Qty: 4</td>
+        </tr>
+        <tr class="item-row" data-item="9">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-03-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 10 -->
+        <tr class="item-row" data-item="10">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">B</span>
+          </td>
+          <td class="name-cell">Medical tape (5 m)</td>
+        </tr>
+        <tr class="item-row" data-item="10">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="10">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2029-06-30" />
+          </td>
+        </tr>
+
+        <!-- ITEM 11 -->
+        <tr class="item-row" data-item="11">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">C</span>
+          </td>
+          <td class="name-cell">CPR face shield</td>
+        </tr>
+        <tr class="item-row" data-item="11">
+          <td class="qty-cell">Qty: 1</td>
+        </tr>
+        <tr class="item-row" data-item="11">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-07-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 12 -->
+        <tr class="item-row" data-item="12">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">C</span>
+          </td>
+          <td class="name-cell">Eye wash ampules (20 mL)</td>
+        </tr>
+        <tr class="item-row" data-item="12">
+          <td class="qty-cell">Qty: 4</td>
+        </tr>
+        <tr class="item-row" data-item="12">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2027-10-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 13 -->
+        <tr class="item-row" data-item="13">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">C</span>
+          </td>
+          <td class="name-cell">Sterile eye pads</td>
+        </tr>
+        <tr class="item-row" data-item="13">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="13">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-04-30" />
+          </td>
+        </tr>
+
+        <!-- ITEM 14 -->
+        <tr class="item-row" data-item="14">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">D</span>
+          </td>
+          <td class="name-cell">Emergency foil blanket</td>
+        </tr>
+        <tr class="item-row" data-item="14">
+          <td class="qty-cell">Qty: 1</td>
+        </tr>
+        <tr class="item-row" data-item="14">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2030-01-31" />
+          </td>
+        </tr>
+
+        <!-- ITEM 15 -->
+        <tr class="item-row" data-item="15">
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="3">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">D</span>
+          </td>
+          <td class="name-cell">Instant cold pack</td>
+        </tr>
+        <tr class="item-row" data-item="15">
+          <td class="qty-cell">Qty: 2</td>
+        </tr>
+        <tr class="item-row" data-item="15">
+          <td class="expiry-cell">
+            <span class="expiry-label">Expiry:</span>
+            <input type="date" class="expiry-input item-expiry" value="2028-11-30" />
+          </td>
+        </tr>
+
+        <!-- ITEM 16 -->
+        <tr class="item-row" data-item="16">
+          <td class="checkbox-cell" rowspan="2">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="2">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">D</span>
+          </td>
+          <td class="name-cell">Scissors (bandage)</td>
+        </tr>
+        <tr class="item-row" data-item="16">
+          <td class="qty-cell"><span class="no-expiry">Qty: 1 – no expiry</span></td>
+        </tr>
+
+        <!-- ITEM 17 -->
+        <tr class="item-row" data-item="17">
+          <td class="checkbox-cell" rowspan="2">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="2">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">D</span>
+          </td>
+          <td class="name-cell">Tweezers</td>
+        </tr>
+        <tr class="item-row" data-item="17">
+          <td class="qty-cell"><span class="no-expiry">Qty: 1 – no expiry</span></td>
+        </tr>
+
+        <!-- ITEM 18 -->
+        <tr class="item-row" data-item="18">
+          <td class="checkbox-cell" rowspan="2">
+            <input type="checkbox" class="item-checkbox" />
+          </td>
+          <td class="location-cell" rowspan="2">
+            <span class="location-line">Pouch</span>
+            <span class="location-line">D</span>
+          </td>
+          <td class="name-cell">First aid manual</td>
+        </tr>
+        <tr class="item-row" data-item="18">
+          <td class="qty-cell"><span class="no-expiry">Qty: 1 – no expiry</span></td>
+        </tr>
+
       </tbody>
     </table>
   </div>
 
   <script>
-    // Get all checkboxes
     const checkboxes = document.querySelectorAll('.item-checkbox');
     const expiryInputs = document.querySelectorAll('.item-expiry');
 
-    // Function to check if date is expired
     function isDateExpired(dateString) {
       const date = new Date(dateString);
       const today = new Date();
@@ -192,7 +515,6 @@
       return date < today;
     }
 
-    // Function to update expiry styling
     function updateExpiryStyle(input) {
       const itemNum = input.closest('tr').getAttribute('data-item');
       const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
@@ -214,28 +536,24 @@
       }
     }
 
-    // Check expiry on load
     expiryInputs.forEach(input => {
       updateExpiryStyle(input);
     });
 
-    // Update expiry on change
     expiryInputs.forEach(input => {
       input.addEventListener('change', function() {
         updateExpiryStyle(this);
       });
     });
 
-    // Handle checkboxes
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', function() {
         const itemNum = this.closest('tr').getAttribute('data-item');
         const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
         const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
-        const isExpired = isDateExpired(expiryInput.value);
 
         rows.forEach(row => {
-          if (this.checked && !isExpired) {
+          if (this.checked && (!expiryInput || !isDateExpired(expiryInput.value))) {
             row.classList.add('checked');
           } else {
             row.classList.remove('checked');

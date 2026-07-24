@@ -39,8 +39,8 @@ header h2{
 .card{
     background:white;
     border-radius:15px;
-    padding:20px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    padding:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
 .pouch-title{
@@ -49,10 +49,22 @@ header h2{
     margin-bottom:20px;
 }
 
+.pouch-header{
+    display:grid;
+    grid-template-columns:90px 1fr 180px 80px 180px;
+    font-weight:bold;
+    color:#0057A8;
+    padding-bottom:10px;
+    margin-bottom:15px;
+    border-bottom:2px solid #0057A8;
+}
+
 .pouch-item{
-    display:flex;
-    gap:15px;
+    display:grid;
+    grid-template-columns:90px 1fr 180px 80px 180px;
+    align-items:center;
     padding:15px 0;
+    margin-bottom:15px;
     border-bottom:1px solid #ddd;
 }
 
@@ -60,37 +72,36 @@ header h2{
     border-bottom:none;
 }
 
-.present{
-    width:24px;
-    height:24px;
-    min-width:24px;
-    margin-top:5px;
+.check-column{
+    display:flex;
+    justify-content:center;
 }
 
-.item-details{
-    flex:1;
+.present{
+    appearance:auto;
+    width:28px;
+    height:28px;
+    cursor:pointer;
 }
 
 .item-name{
-    font-size:18px;
     font-weight:bold;
     color:#0057A8;
 }
 
 .item-number,
-.item-qty,
-.item-expiry{
-    margin-top:5px;
-    color:#555;
+.item-qty{
+    color:#444;
 }
 
-input[type="date"]{
+.item-expiry input{
     padding:5px;
-    margin-left:5px;
+    border:1px solid #ccc;
+    border-radius:4px;
 }
 
 .save-btn{
-    margin-top:25px;
+    margin-top:20px;
     background:#0057A8;
     color:white;
     border:none;
@@ -102,6 +113,16 @@ input[type="date"]{
 
 .save-btn:hover{
     background:#004685;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#0057A8;
+    color:white;
+    padding:10px 20px;
+    border-radius:10px;
+    text-decoration:none;
 }
 
 </style>
@@ -116,115 +137,121 @@ input[type="date"]{
 
 <div class="container">
 
+<a href="efa-kit-1.html" class="back-btn">
+    ← Terug naar EFA Kit 1
+</a>
+
 <div class="card">
 
 <h2 class="pouch-title">Pouch A</h2>
 
+<div class="pouch-header">
+    <div>Present</div>
+    <div>Item Description</div>
+    <div>Item Number</div>
+    <div>Qty</div>
+    <div>Expiry</div>
+</div>
+
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Oropharyngeal Airway Size 2</div>
-        <div class="item-number">Item Number: PB24105</div>
-        <div class="item-qty">Qty: 1</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2026-12-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Oropharyngeal Airway Size 2</div>
+    <div class="item-number">PB24105</div>
+    <div class="item-qty">1</div>
+    <div class="item-expiry">
+        <input type="date" value="2026-12-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Oropharyngeal Airway Size 3</div>
-        <div class="item-number">Item Number: PB24106</div>
-        <div class="item-qty">Qty: 1</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2027-02-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Oropharyngeal Airway Size 3</div>
+    <div class="item-number">PB24106</div>
+    <div class="item-qty">1</div>
+    <div class="item-expiry">
+        <input type="date" value="2027-02-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Oropharyngeal Airway Size 4</div>
-        <div class="item-number">Item Number: PB24107</div>
-        <div class="item-qty">Qty: 1</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2027-02-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Oropharyngeal Airway Size 4</div>
+    <div class="item-number">PB24107</div>
+    <div class="item-qty">1</div>
+    <div class="item-expiry">
+        <input type="date" value="2027-02-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Nasopharyngeal Size 6</div>
-        <div class="item-number">Item Number: PBNP00060</div>
-        <div class="item-qty">Qty: 2</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2027-04-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Nasopharyngeal Size 6</div>
+    <div class="item-number">PBNP00060</div>
+    <div class="item-qty">2</div>
+    <div class="item-expiry">
+        <input type="date" value="2027-04-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Nasopharyngeal Size 7</div>
-        <div class="item-number">Item Number: PBNP00070</div>
-        <div class="item-qty">Qty: 2</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2027-05-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Nasopharyngeal Size 7</div>
+    <div class="item-number">PBNP00070</div>
+    <div class="item-qty">2</div>
+    <div class="item-expiry">
+        <input type="date" value="2027-05-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">5g Lubricant Sachet</div>
-        <div class="item-number">Item Number: 1120</div>
-        <div class="item-qty">Qty: 1</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2026-09-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">5g Lubricant Sachet</div>
+    <div class="item-number">1120</div>
+    <div class="item-qty">1</div>
+    <div class="item-expiry">
+        <input type="date" value="2026-09-01">
     </div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Manual Suction Device</div>
-        <div class="item-number">Item Number: TM909</div>
-        <div class="item-qty">Qty: 1</div>
-        <div class="item-expiry">Expiry: N/A</div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
     </div>
+    <div class="item-name">Manual Suction Device</div>
+    <div class="item-number">TM909</div>
+    <div class="item-qty">1</div>
+    <div class="item-expiry">N/A</div>
 </div>
 
 <div class="pouch-item">
-    <input class="present" type="checkbox">
-    <div class="item-details">
-        <div class="item-name">Gloves</div>
-        <div class="item-number">Item Number: -</div>
-        <div class="item-qty">Qty: 2</div>
-        <div class="item-expiry">
-            Expiry:
-            <input type="date" value="2029-01-01">
-        </div>
+    <div class="check-column">
+        <input type="checkbox" class="present">
+    </div>
+    <div class="item-name">Gloves</div>
+    <div class="item-number">-</div>
+    <div class="item-qty">2</div>
+    <div class="item-expiry">
+        <input type="date" value="2029-01-01">
     </div>
 </div>
 
-<button class="save-btn" onclick="saveData()">Opslaan</button>
+<button class="save-btn" onclick="saveData()">
+    Opslaan
+</button>
 
 </div>
-
 </div>
 
 <script>
@@ -234,17 +261,16 @@ const STORAGE_KEY = "EFA_KIT_1_POUCH_A";
 function saveData() {
 
     const items = document.querySelectorAll('.pouch-item');
-
-    const data = [];
+    let data = [];
 
     items.forEach(item => {
 
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        const date = item.querySelector('input[type="date"]');
+        const checkbox = item.querySelector('.present');
+        const dateInput = item.querySelector('input[type="date"]');
 
         data.push({
             checked: checkbox ? checkbox.checked : false,
-            date: date ? date.value : ""
+            date: dateInput ? dateInput.value : ""
         });
 
     });
@@ -256,4 +282,34 @@ function saveData() {
 
 function loadData() {
 
-    const data = JSON.parse(localStorage.
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+    if(!data) return;
+
+    const items = document.querySelectorAll('.pouch-item');
+
+    items.forEach((item,index) => {
+
+        if(!data[index]) return;
+
+        const checkbox = item.querySelector('.present');
+        const dateInput = item.querySelector('input[type="date"]');
+
+        if(checkbox){
+            checkbox.checked = data[index].checked;
+        }
+
+        if(dateInput && data[index].date){
+            dateInput.value = data[index].date;
+        }
+
+    });
+
+}
+
+loadData();
+
+</script>
+
+</body>
+</html>

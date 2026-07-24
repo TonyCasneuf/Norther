@@ -1,31 +1,146 @@
-<div class="inventory-item">
 
-    <div class="item-header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>First Aid Kit – Inventory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
 
-        <input type="checkbox" class="present">
+    .header {
+      background: #1e73be;
+      color: #fff;
+      padding: 12px 16px;
+      text-align: center;
+    }
 
-        <div class="item-name">
-            Oropharyngeal Airway Size 2
-        </div>
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
 
-    </div>
+    .header h2 {
+      margin: 4px 0 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
 
-    <div class="item-info">
+    .container {
+      padding: 12px;
+    }
 
-        <span><strong>Pouch:</strong> A</span>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
 
-        <span><strong>Item No:</strong> PB24105</span>
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+    }
 
-        <span><strong>Qty:</strong> 1</span>
+    th {
+      background: #f7f7f7;
+      text-align: left;
+    }
 
-    </div>
+    .checkbox-cell {
+      width: 40px;
+      text-align: center;
+      vertical-align: middle;
+    }
 
-    <div class="expiry-row">
+    .checkbox-cell input[type="checkbox"] {
+      transform: scale(1.4);
+      cursor: pointer;
+    }
 
-        <label>Exp. Date</label>
+    .location {
+      font-weight: bold;
+      color: #333;
+    }
 
-        <input type="date" value="2026-12-01">
+    .label {
+      font-weight: bold;
+      width: 120px;
+    }
 
-    </div>
+    @media (max-width: 480px) {
+      th, td {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header similar style to your main page -->
+  <div class="header">
+    <h1>NORTHER</h1>
+    <h2>First Aid Kit – Inventory</h2>
+  </div>
 
-</div>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Field</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example item: checkbox spanning three rows -->
+        <tr>
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" />
+          </td>
+          <td class="label">Location</td>
+          <td class="location">Pouch A</td>
+        </tr>
+        <tr>
+          <td class="label">Name</td>
+          <td>Sterile gauze pads</td>
+        </tr>
+        <tr>
+          <td class="label">Item number / Qty / Expiry / Remark</td>
+          <td>
+            Item No.: 123456789<br />
+            Qty: 10<br />
+            Expiry Date: 2028-05-31<br />
+            Remark: Replace when seal is broken
+          </td>
+        </tr>
+
+        <!-- Duplicate this block for more items -->
+        <tr>
+          <td class="checkbox-cell" rowspan="3">
+            <input type="checkbox" />
+          </td>
+          <td class="label">Location</td>
+          <td class="location">Pouch A</td>
+        </tr>
+        <tr>
+          <td class="label">Name</td>
+          <td>Adhesive bandages</td>
+        </tr>
+        <tr>
+          <td class="label">Item number / Qty / Expiry / Remark</td>
+          <td>
+            Item No.: 987654321<br />
+            Qty: 25<br />
+            Expiry Date: 2027-11-15<br />
+            Remark: Check packaging integrity
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

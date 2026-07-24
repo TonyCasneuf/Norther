@@ -34,6 +34,36 @@
       padding: 12px;
     }
 
+    .search-box {
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .search-box button {
+      padding: 8px 16px;
+      font-size: 14px;
+      background: #1e73be;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .search-box button:hover {
+      background: #155a99;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -62,9 +92,14 @@
       cursor: pointer;
     }
 
-    .location {
+    .location-cell {
       font-weight: bold;
       color: #333;
+      width: 40px;
+    }
+
+    .name-cell {
+      font-weight: 600;
     }
 
     .item-details {
@@ -72,9 +107,21 @@
       color: #666;
     }
 
+    tr.hidden {
+      display: none;
+    }
+
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
+      }
+      
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box input {
+        min-width: 100%;
       }
     }
   </style>
@@ -87,7 +134,17 @@
   </div>
 
   <div class="container">
-    <table>
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search by Expiry (e.g., 2028-05-31)" 
+      />
+      <button onclick="searchTable()">Search</button>
+      <button onclick="clearSearch()">Clear</button>
+    </div>
+
+    <table id="inventoryTable">
       <thead>
         <tr>
           <th></th>
@@ -95,41 +152,92 @@
           <th>Name</th>
           <th>Item No.</th>
           <th>Qty</th>
-          <th>Expiry</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Example item -->
-        <tr>
-          <td class="checkbox-cell" rowspan="2">
+        <!-- Example item: Row 1 - Location & Name -->
+        <tr class="data-row">
+          <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" />
           </td>
-          <td class="location" rowspan="2">Pouch A</td>
-          <td rowspan="2">Sterile gauze pads</td>
+          <td class="location-cell" rowspan="3">A</td>
+          <td class="name-cell" colspan="3">Sterile gauze pads</td>
+        </tr>
+        <!-- Row 2 - Item No & Qty -->
+        <tr class="data-row">
           <td>123456789</td>
           <td>10</td>
-          <td>2028-05-31</td>
+          <td></td>
         </tr>
-        <tr>
-          <td colspan="3" class="item-details"></td>
+        <!-- Row 3 - Expiry Date -->
+        <tr class="data-row">
+          <td colspan="3" class="item-details">
+            Expiry: <span class="expiry-cell">2028-05-31</span>
+          </td>
         </tr>
 
-        <!-- Second item -->
-        <tr>
-          <td class="checkbox-cell" rowspan="2">
+        <!-- Second item: Row 1 - Location & Name -->
+        <tr class="data-row">
+          <td class="checkbox-cell" rowspan="3">
             <input type="checkbox" />
           </td>
-          <td class="location" rowspan="2">Pouch A</td>
-          <td rowspan="2">Adhesive bandages</td>
+          <td class="location-cell" rowspan="3">A</td>
+          <td class="name-cell" colspan="3">Adhesive bandages</td>
+        </tr>
+        <!-- Row 2 - Item No & Qty -->
+        <tr class="data-row">
           <td>987654321</td>
           <td>25</td>
-          <td>2027-11-15</td>
+          <td></td>
         </tr>
-        <tr>
-          <td colspan="3" class="item-details"></td>
+        <!-- Row 3 - Expiry Date -->
+        <tr class="data-row">
+          <td colspan="3" class="item-details">
+            Expiry: <span class="expiry-cell">2027-11-15</span>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <script>
+    function searchTable() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#inventoryTable tbody tr.data-row');
+
+      rows.forEach((row) => {
+        const expiryCell = row.querySelector('.expiry-cell');
+        const nameCell = row.querySelector('.name-cell');
+        
+        let matches = false;
+        
+        if (expiryCell) {
+          const expiry = expiryCell.textContent.toLowerCase();
+          matches = expiry.includes(searchInput);
+        }
+        
+        if (!matches && nameCell) {
+          const name = nameCell.textContent.toLowerCase();
+          matches = name.includes(searchInput);
+        }
+        
+        row.classList.toggle('hidden', searchInput && !matches);
+      });
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.querySelectorAll('#inventoryTable tbody tr.data-row').forEach(row => {
+        row.classList.remove('hidden');
+      });
+    }
+
+    // Allow Enter key to search
+    document.getElementById('searchInput').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        searchTable();
+      }
+    });
+  </script>
 </body>
 </html>

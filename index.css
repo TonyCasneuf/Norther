@@ -179,21 +179,22 @@ header h2{
     padding:8px;
 }
 
-.kit-with-image {
+.first-aid-kit {
     display: flex;
-    gap: 20px;
     align-items: center;
-    margin-bottom: 15px;
 }
 
-.kit-with-image .kit {
-    margin-bottom: 0;
-    flex: 1;
+.kit-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
 }
 
-.kit-image {
-    max-width: 200px;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+.kit-image-small {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
 }

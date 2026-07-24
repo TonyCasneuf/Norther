@@ -44,6 +44,11 @@
       border-left: 4px solid #22c55e;
     }
 
+    .item-row.expired {
+      background-color: #fef2f2;
+      border-left: 4px solid #ef4444;
+    }
+
     .checkbox-cell {
       width: 80px;
       text-align: center;
@@ -88,6 +93,17 @@
       width: 120px;
     }
 
+    .expiry-input.expired {
+      border-color: #ef4444;
+      background-color: #fef2f2;
+      color: #991b1b;
+    }
+
+    .expiry-input.valid {
+      border-color: #22c55e;
+      background-color: #f0fdf4;
+    }
+
     @media (max-width: 480px) {
       th, td {
         font-size: 13px;
@@ -124,7 +140,7 @@
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="1">
-          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2028-05-31" /></td>
+          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input item-expiry" value="2028-05-31" /></td>
         </tr>
 
         <!-- ITEM 2 -->
@@ -145,7 +161,7 @@
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="2">
-          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input" value="2027-11-15" /></td>
+          <td class="expiry-cell">Expiry: <input type="date" class="expiry-input item-expiry" value="2027-11-15" /></td>
         </tr>
       </tbody>
     </table>
@@ -154,17 +170,60 @@
   <script>
     // Get all checkboxes
     const checkboxes = document.querySelectorAll('.item-checkbox');
-    
+    const expiryInputs = document.querySelectorAll('.item-expiry');
+
+    // Function to check if date is expired
+    function isDateExpired(dateString) {
+      const date = new Date(dateString);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return date < today;
+    }
+
+    // Function to update expiry styling
+    function updateExpiryStyle(input) {
+      const itemNum = input.closest('tr').getAttribute('data-item');
+      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
+      const isExpired = isDateExpired(input.value);
+
+      if (isExpired) {
+        input.classList.add('expired');
+        input.classList.remove('valid');
+        rows.forEach(row => {
+          row.classList.add('expired');
+          row.classList.remove('checked');
+        });
+      } else {
+        input.classList.add('valid');
+        input.classList.remove('expired');
+        rows.forEach(row => {
+          row.classList.remove('expired');
+        });
+      }
+    }
+
+    // Check expiry on load
+    expiryInputs.forEach(input => {
+      updateExpiryStyle(input);
+    });
+
+    // Update expiry on change
+    expiryInputs.forEach(input => {
+      input.addEventListener('change', function() {
+        updateExpiryStyle(this);
+      });
+    });
+
+    // Handle checkboxes
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', function() {
         const itemNum = this.closest('tr').getAttribute('data-item');
-        
-        // Get all 3 rows of this item
         const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
-        
-        // Toggle the 'checked' class on all rows of this item
+        const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
+        const isExpired = isDateExpired(expiryInput.value);
+
         rows.forEach(row => {
-          if (this.checked) {
+          if (this.checked && !isExpired) {
             row.classList.add('checked');
           } else {
             row.classList.remove('checked');

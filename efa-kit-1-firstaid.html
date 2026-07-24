@@ -6,6 +6,7 @@
 <title>Inventory FA</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial, Helvetica, sans-serif;
@@ -25,7 +26,7 @@ header h1{
 }
 
 header h2{
-    margin:5px 0 0;
+    margin:5px 0 0 0;
     font-weight:normal;
 }
 
@@ -42,50 +43,67 @@ header h2{
     box-shadow:0 4px 10px rgba(0,0,0,.15);
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+.pouch-title{
+    color:#0057A8;
+    margin-top:0;
+    margin-bottom:20px;
 }
 
-th{
-    background:#0057A8;
-    color:white;
-    padding:12px;
-    text-align:left;
-}
-
-td{
-    padding:10px;
+.pouch-item{
+    display:flex;
+    gap:15px;
+    padding:15px 0;
     border-bottom:1px solid #ddd;
+}
+
+.pouch-item:last-child{
+    border-bottom:none;
+}
+
+.present{
+    width:24px;
+    height:24px;
+    min-width:24px;
+    margin-top:5px;
+}
+
+.item-details{
+    flex:1;
+}
+
+.item-name{
+    font-size:18px;
+    font-weight:bold;
+    color:#0057A8;
+}
+
+.item-number,
+.item-qty,
+.item-expiry{
+    margin-top:5px;
+    color:#555;
 }
 
 input[type="date"]{
     padding:5px;
-}
-
-input[type="number"]{
-    width:60px;
-    padding:5px;
+    margin-left:5px;
 }
 
 .save-btn{
-    margin-top:20px;
+    margin-top:25px;
     background:#0057A8;
     color:white;
     border:none;
     padding:12px 25px;
     border-radius:10px;
     cursor:pointer;
+    font-size:16px;
 }
 
 .save-btn:hover{
     background:#004685;
 }
 
-.present{
-    width:22px;
-    height:22px;
-}
 </style>
 </head>
 
@@ -97,70 +115,132 @@ input[type="number"]{
 </header>
 
 <div class="container">
+
 <div class="card">
 
-<table id="inventoryTable">
-<thead>
-<tr>
-<th>Pouch</th>
-<th>Item</th>
-<th>Item Number</th>
-<th>Qty</th>
-<th>Expiry Date</th>
-<th>Present</th>
-</tr>
-</thead>
+<h2 class="pouch-title">Pouch A</h2>
 
-<tbody>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Oropharyngeal Airway Size 2</div>
+        <div class="item-number">Item Number: PB24105</div>
+        <div class="item-qty">Qty: 1</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2026-12-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>C</td><td>Trauma Dressing 6 inch</td><td>OAL-6</td><td>2</td><td><input type="date" value="2028-02-01"></td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Oropharyngeal Airway Size 3</div>
+        <div class="item-number">Item Number: PB24106</div>
+        <div class="item-qty">Qty: 1</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2027-02-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>C</td><td>Trauma Dressing 10cm x 400cm</td><td>-</td><td>2</td><td><input type="date" value="2027-05-01"></td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Oropharyngeal Airway Size 4</div>
+        <div class="item-number">Item Number: PB24107</div>
+        <div class="item-qty">Qty: 1</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2027-02-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>C</td><td>Haemostatic Gauze</td><td>-</td><td>2</td><td><input type="date" value="2028-06-01"></td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Nasopharyngeal Size 6</div>
+        <div class="item-number">Item Number: PBNP00060</div>
+        <div class="item-qty">Qty: 2</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2027-04-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>C</td><td>C-A-T Combat Tourniquet</td><td>84-0010</td><td>2</td><td>/</td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Nasopharyngeal Size 7</div>
+        <div class="item-number">Item Number: PBNP00070</div>
+        <div class="item-qty">Qty: 2</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2027-05-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>C</td><td>Tough Cut Scissors</td><td>-</td><td>1</td><td>/</td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">5g Lubricant Sachet</div>
+        <div class="item-number">Item Number: 1120</div>
+        <div class="item-qty">Qty: 1</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2026-09-01">
+        </div>
+    </div>
+</div>
 
-<tr><td>A</td><td>Oropharyngeal Airway Size 2</td><td>PB24105</td><td>1</td><td><input type="date" value="2026-12-01"></td><td><input class="present" type="checkbox"></td></tr>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Manual Suction Device</div>
+        <div class="item-number">Item Number: TM909</div>
+        <div class="item-qty">Qty: 1</div>
+        <div class="item-expiry">Expiry: N/A</div>
+    </div>
+</div>
 
-<tr><td>A</td><td>Oropharyngeal Airway Size 3</td><td>PB24106</td><td>1</td><td><input type="date" value="2027-02-01"></td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>A</td><td>Oropharyngeal Airway Size 4</td><td>PB24107</td><td>1</td><td><input type="date" value="2027-02-01"></td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>AED</td><td>AED Philips HeartStart FRx</td><td>-</td><td>1</td><td><input type="date" value="2027-01-01"></td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>F</td><td>Box Plasters</td><td>7184</td><td>20</td><td><input type="date" value="2027-06-01"></td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>F</td><td>Burn Gel 120ml</td><td>B605</td><td>2</td><td><input type="date" value="2027-03-01"></td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>Loose</td><td>Cervical Collar</td><td>002810001</td><td>1</td><td>/</td><td><input class="present" type="checkbox"></td></tr>
-
-<tr><td>Loose</td><td>Patient Report Forms</td><td>-</td><td>5</td><td>N/A</td><td><input class="present" type="checkbox"></td></tr>
-
-</tbody>
-</table>
+<div class="pouch-item">
+    <input class="present" type="checkbox">
+    <div class="item-details">
+        <div class="item-name">Gloves</div>
+        <div class="item-number">Item Number: -</div>
+        <div class="item-qty">Qty: 2</div>
+        <div class="item-expiry">
+            Expiry:
+            <input type="date" value="2029-01-01">
+        </div>
+    </div>
+</div>
 
 <button class="save-btn" onclick="saveData()">Opslaan</button>
 
 </div>
+
 </div>
 
 <script>
 
-const STORAGE_KEY = "EFA_KIT_1_FIRST_AID";
+const STORAGE_KEY = "EFA_KIT_1_POUCH_A";
 
 function saveData() {
 
-    const rows = document.querySelectorAll("#inventoryTable tbody tr");
+    const items = document.querySelectorAll('.pouch-item');
 
     const data = [];
 
-    rows.forEach(row => {
+    items.forEach(item => {
 
-        const checkbox = row.querySelector('input[type="checkbox"]');
-        const date = row.querySelector('input[type="date"]');
+        const checkbox = item.querySelector('input[type="checkbox"]');
+        const date = item.querySelector('input[type="date"]');
 
         data.push({
             checked: checkbox ? checkbox.checked : false,
@@ -174,33 +254,6 @@ function saveData() {
     alert("Gegevens opgeslagen");
 }
 
-function loadData(){
+function loadData() {
 
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-    if(!data) return;
-
-    const rows = document.querySelectorAll("#inventoryTable tbody tr");
-
-    rows.forEach((row,index)=>{
-
-        if(!data[index]) return;
-
-        const checkbox = row.querySelector('input[type="checkbox"]');
-        const date = row.querySelector('input[type="date"]');
-
-        if(checkbox)
-            checkbox.checked = data[index].checked;
-
-        if(date && data[index].date)
-            date.value = data[index].date;
-
-    });
-}
-
-loadData();
-
-</script>
-
-</body>
-</html>
+    const data = JSON.parse(localStorage.

@@ -180,20 +180,18 @@ header h2{
 }
 
 .first-aid-kit {
-    display: flex;
-    align-items: center;
+    display: block !important;
 }
 
 .kit-content {
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 100%;
+    gap: 8px;
 }
 
 .kit-image-small {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
     flex-shrink: 0;
 }

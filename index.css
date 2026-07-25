@@ -181,18 +181,25 @@ header h2{
 
 .first-aid-kit {
     display: block !important;
+    padding: 20px !important;
 }
 
 .kit-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 20px;
+    width: 100%;
+}
+
+.kit-content h2 {
+    margin: 0;
+    flex: 1;
 }
 
 .kit-image-small {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     flex-shrink: 0;
 }

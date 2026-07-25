@@ -186,12 +186,13 @@ header h2{
 .kit-content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .kit-image-small {
-    width: 16px;
-    height: 16px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
     flex-shrink: 0;
 }

@@ -324,57 +324,7 @@
     // Get all checkboxes
     const checkboxes = document.querySelectorAll('.item-checkbox');
     const expiryInputs = document.querySelectorAll('.item-expiry');
-/*
-    // Function to check if date is expired
-    function isDateExpired(dateString) {
-      const date = new Date(dateString);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return date < today;
-    }
-*/
-    function isDateExpired(monthString) {
-  const [year, month] = monthString.split('-');
 
-  const expiryDate = new Date(year, month, 0); // laatste dag van de maand
-  const today = new Date();
-
-  return expiryDate < today;
-}
-    // Function to update expiry styling
-    function updateExpiryStyle(input) {
-      const itemNum = input.closest('tr').getAttribute('data-item');
-      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
-      const isExpired = isDateExpired(input.value);
-
-      if (isExpired) {
-        input.classList.add('expired');
-        input.classList.remove('valid');
-        rows.forEach(row => {
-          row.classList.add('expired');
-          row.classList.remove('checked');
-        });
-      } else {
-        input.classList.add('valid');
-        input.classList.remove('expired');
-        rows.forEach(row => {
-          row.classList.remove('expired');
-        });
-      }
-    }
-
-    // Check expiry on load
-    expiryInputs.forEach(input => {
-      updateExpiryStyle(input);
-    });
-/*
-    // Update expiry on change
-    expiryInputs.forEach(input => {
-      input.addEventListener('change', function() {
-        updateExpiryStyle(this);
-      });
-    });
-*/
     expiryInputs.forEach(input => {
   const itemNum = input.closest('tr').getAttribute('data-item');
 
@@ -383,7 +333,19 @@
   if (savedDate) {
     input.value = savedDate;
   }
+function isDateExpired(dateString) {
+  const match = dateString.match(/^(\d{2})-(\d{4})$/);
 
+  if (!match) return false;
+
+  const month = parseInt(match[1], 10);
+  const year = parseInt(match[2], 10);
+
+  // laatste dag van de vervalmaand
+  const expiryDate = new Date(year, month, 0, 23, 59, 59);
+
+  return expiryDate < new Date();
+}
   updateExpiryStyle(input);
 
   // Opslaan bij wijziging

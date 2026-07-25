@@ -148,7 +148,7 @@
         <tr class="item-row" data-item="1">
           <td class="expiry-cell">
             <span class="expiry-label">Expiry:</span>
-            <input type="date" class="expiry-input item-expiry" value="2026-12" />
+            <input type="month" class="expiry-input item-expiry" value="2026-12" />
           </td>
         </tr>
 
@@ -358,13 +358,31 @@
     expiryInputs.forEach(input => {
       updateExpiryStyle(input);
     });
-
+/*
     // Update expiry on change
     expiryInputs.forEach(input => {
       input.addEventListener('change', function() {
         updateExpiryStyle(this);
       });
     });
+*/
+    expiryInputs.forEach(input => {
+  const itemNum = input.closest('tr').getAttribute('data-item');
+
+  // Laad opgeslagen datum
+  const savedDate = localStorage.getItem(`expiry_${itemNum}`);
+  if (savedDate) {
+    input.value = savedDate;
+  }
+
+  updateExpiryStyle(input);
+
+  // Opslaan bij wijziging
+  input.addEventListener('change', function() {
+    localStorage.setItem(`expiry_${itemNum}`, this.value);
+    updateExpiryStyle(this);
+  });
+});
 
     // Handle checkboxes
     checkboxes.forEach(checkbox => {

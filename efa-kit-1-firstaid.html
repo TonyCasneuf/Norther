@@ -365,23 +365,24 @@
 
   const expiryDate = new Date(year, month, 0); // laatste dag van de maand
   const today = new Date();
-  const expiry = input.value;
+/*                                                       */
+/*                                                       */
+      
+      checkbox.addEventListener("change", () => {
+    const expiry = expiryInput.value;
 
-  if (expiry === "N.A." || expiry === "") 
-  { 
-    row.classList.add("valid");
-  }
-  else {
-    const expiryDate = new Date(expiry);
-
-    if (expiryDate >= currentDate) {
-        row.classList.add("valid");
+    if (
+        checkbox.checked &&
+        (expiry === "N.A." || expiry === "" || !isExpired(expiry))
+    ) {
+        row.classList.add("checked-green");
+    } else {
+        row.classList.remove("checked-green");
     }
-    else
-    {
-        row.classList.add("expired");
-    }
-}
+});
+  
+  /*                                                       */
+      
   return expiryDate < today;
 }
     // Function to update expiry styling

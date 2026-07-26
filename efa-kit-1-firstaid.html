@@ -365,7 +365,23 @@
 
   const expiryDate = new Date(year, month, 0); // laatste dag van de maand
   const today = new Date();
+  const expiry = input.value;
 
+  if (expiry === "N.A." || expiry === "") 
+  { 
+    row.classList.add("valid");
+  }
+  else {
+    const expiryDate = new Date(expiry);
+
+    if (expiryDate >= currentDate) {
+        row.classList.add("valid");
+    }
+    else
+    {
+        row.classList.add("expired");
+    }
+}
   return expiryDate < today;
 }
     // Function to update expiry styling
@@ -386,6 +402,7 @@
         input.classList.remove('expired');
         rows.forEach(row => {
           row.classList.remove('expired');
+          
         });
       }
     }

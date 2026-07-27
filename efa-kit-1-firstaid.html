@@ -547,6 +547,14 @@
     const saveBtn = document.getElementById('saveBtn');
     let currentItemForRemark = null;
 
+    // Sanitize text to prevent XSS attacks - escape HTML entities
+    function sanitizeText(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
     function isDateExpired(monthString) {
       if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {
         return false;
@@ -597,7 +605,9 @@
     function openRemarksModal(itemNum) {
       currentItemForRemark = itemNum;
       const savedRemark = localStorage.getItem(`remark_${itemNum}`);
-      remarkText.value = savedRemark || '';
+      // Sanitize the remark content for XSS prevention
+      const sanitizedRemark = sanitizeText(savedRemark || '');
+      remarkText.value = sanitizedRemark;
       remarksModal.classList.add('active');
       // Move focus to the textarea for better accessibility
       remarkText.focus();
@@ -669,13 +679,6 @@
     modalCloseBtn.addEventListener('click', closeRemarksModal);
     cancelBtn.addEventListener('click', closeRemarksModal);
     saveBtn.addEventListener('click', saveRemark);
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', function(event) {
-      if (event.target === remarksModal) {
-        closeRemarksModal();
-      }
-    });
 
     // Close modal when Escape key is pressed
     window.addEventListener('keydown', function(event) {

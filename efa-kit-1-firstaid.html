@@ -48,15 +48,115 @@
       border-left: 4px solid #ef4444;
     }
 
-    .checkbox-cell {
-      width: 40px;
-      text-align: center;
+    .qty-cell {
+      text-align: left;
       vertical-align: middle;
     }
 
-    .checkbox-cell input[type="checkbox"] {
+    .qty-check-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 10px;
+    }
+
+    .qty-check-wrap input[type="checkbox"] {
       transform: scale(1.4);
       cursor: pointer;
+    }
+
+    .remark-btn {
+      background: none;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      padding: 2px 7px;
+      font-size: 15px;
+      cursor: pointer;
+      color: #555;
+      transition: background 0.15s, border-color 0.15s;
+      vertical-align: middle;
+    }
+
+    .remark-btn:hover {
+      background: #e8f0fb;
+      border-color: #0057a8;
+    }
+
+    .remark-btn.has-remark {
+      border-color: #0057a8;
+      color: #0057a8;
+      background: #e8f0fb;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal-box h3 {
+      margin: 0 0 14px;
+      font-size: 17px;
+      color: #0057a8;
+    }
+
+    .modal-box textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      min-height: 90px;
+      font-family: Arial, sans-serif;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .modal-buttons button {
+      padding: 8px 18px;
+      border: none;
+      border-radius: 7px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .modal-buttons .btn-save {
+      background: #0057a8;
+      color: #fff;
+    }
+
+    .modal-buttons .btn-save:hover {
+      background: #003d7a;
+    }
+
+    .modal-buttons .btn-cancel {
+      background: #e5e5e5;
+      color: #333;
+    }
+
+    .modal-buttons .btn-cancel:hover {
+      background: #ccc;
     }
 
     .location-cell {
@@ -73,10 +173,6 @@
 
     .name-cell {
       font-weight: 600;
-      text-align: left;
-    }
-
-    .qty-cell {
       text-align: left;
     }
 
@@ -121,27 +217,23 @@
     <table id="inventoryTable">
       <thead>
         <tr>
-          <th>Checked</th>
           <th>Location</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <!-- ITEM 1 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="1">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Oropharyngeal airway Size 2 </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="1">
-          <td class="qty-cell">Qty: 1</td>
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="1" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="1">
@@ -152,20 +244,17 @@
         </tr>
 
         <!-- ITEM 2 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="2">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Oropharyngeal airway Size 3 </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="2">
-          <td class="qty-cell">Qty: 1</td>
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="2" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="2">
@@ -176,20 +265,17 @@
         </tr>
         
         <!-- ITEM 3 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="3">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Oropharyngeal airway Size 4 </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="3">
-          <td class="qty-cell">Qty: 1</td>
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="3" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="3">
@@ -200,20 +286,17 @@
         </tr>
         
         <!-- ITEM 4 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="4">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Nasopharyngeal Size 6 </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="4">
-          <td class="qty-cell">Qty: 2</td>
+          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="4" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="4">
@@ -224,20 +307,17 @@
         </tr>
         
         <!-- ITEM 5 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="5">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Nasopharyngeal Size 7 </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="5">
-          <td class="qty-cell">Qty: 2</td>
+          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="5" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="5">
@@ -248,20 +328,17 @@
         </tr>
         
         <!-- ITEM 6 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="6">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">5G Lubricant Sachet </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="6">
-          <td class="qty-cell">Qty: 1</td>
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="6" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="6">
@@ -272,20 +349,17 @@
         </tr>
                
         <!-- ITEM 7 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="7">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Manual suction device </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="7">
-          <td class="qty-cell">Qty: 1</td>
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="7" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="7">
@@ -296,20 +370,17 @@
         </tr>
                        
         <!-- ITEM 8 -->
-        <!-- Row 1 - Checkbox, Location & Name -->
+        <!-- Row 1 - Location & Name -->
         <tr class="item-row" data-item="8">
-          <td class="checkbox-cell" rowspan="3">
-            <input type="checkbox" class="item-checkbox" />
-          </td>
           <td class="location-cell" rowspan="3">
             <span class="location-line">Pouch</span>
             <span class="location-line">A</span>
           </td>
           <td class="name-cell">Gloves </td>
         </tr>
-        <!-- Row 2 - Qty -->
+        <!-- Row 2 - Qty + Checkbox + Remark -->
         <tr class="item-row" data-item="8">
-          <td class="qty-cell">Qty: 2</td>
+          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="8" title="Opmerking toevoegen">📝</button></span></td>
         </tr>
         <!-- Row 3 - Expiry Date -->
         <tr class="item-row" data-item="8">
@@ -321,9 +392,6 @@
         
          <!-- ITEM 9 --> <!-- Pouch B -->
 <tr class="item-row" data-item="9">
-    <td class="checkbox-cell" rowspan="3">
-        <input type="checkbox" class="item-checkbox">
-    </td>
     <td class="location-cell" rowspan="3">
         Pouch<br>B
     </td>
@@ -331,7 +399,7 @@
 </tr>
 
 <tr class="item-row" data-item="9">
-    <td class="qty-cell">Qty: 1</td>
+    <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd"><button class="remark-btn" data-item="9" title="Opmerking toevoegen">📝</button></span></td>
 </tr>
 
 <tr class="item-row" data-item="9">
@@ -345,6 +413,18 @@
       
       </tbody>
     </table>
+  </div>
+
+  <!-- Remark Modal -->
+  <div id="remark-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-box">
+      <h3 id="modal-heading">Opmerking – <span id="modal-item-name"></span></h3>
+      <textarea id="remark-text" aria-label="Opmerking tekst" placeholder="Voer hier uw opmerking in..."></textarea>
+      <div class="modal-buttons">
+        <button class="btn-cancel" id="modal-cancel">Annuleren</button>
+        <button class="btn-save" id="modal-save">Opslaan</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -430,6 +510,55 @@
         localStorage.setItem(`checked_${itemNum}`, String(this.checked));
         updateItemState(itemNum);
       });
+    });
+
+    // Remark buttons
+    const remarkModal = document.getElementById('remark-modal');
+    const remarkText = document.getElementById('remark-text');
+    const modalItemName = document.getElementById('modal-item-name');
+    let activeRemarkItem = null;
+
+    function updateRemarkButton(itemNum) {
+      const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
+      if (!btn) return;
+      const saved = localStorage.getItem(`remark_${itemNum}`);
+      btn.classList.toggle('has-remark', saved && saved.trim());
+    }
+
+    function closeModal() {
+      remarkModal.style.display = 'none';
+      activeRemarkItem = null;
+    }
+
+    document.querySelectorAll('.remark-btn').forEach(btn => {
+      const itemNum = btn.getAttribute('data-item');
+      updateRemarkButton(itemNum);
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        activeRemarkItem = itemNum;
+        const nameCell = document.querySelector(`tr[data-item="${itemNum}"] .name-cell`);
+        modalItemName.textContent = nameCell ? nameCell.textContent.trim() : `Item ${itemNum}`;
+        remarkText.value = localStorage.getItem(`remark_${itemNum}`) || '';
+        remarkModal.style.display = 'flex';
+        remarkText.focus();
+      });
+    });
+
+    document.getElementById('modal-save').addEventListener('click', function() {
+      if (activeRemarkItem !== null) {
+        localStorage.setItem(`remark_${activeRemarkItem}`, remarkText.value);
+        updateRemarkButton(activeRemarkItem);
+      }
+      closeModal();
+    });
+
+    document.getElementById('modal-cancel').addEventListener('click', closeModal);
+
+    remarkModal.addEventListener('click', function(e) {
+      if (e.target === remarkModal) {
+        closeModal();
+      }
     });
   </script>
 </body>

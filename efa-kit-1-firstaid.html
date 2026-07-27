@@ -618,20 +618,25 @@
       // Remove the Escape key handler when modal closes
       document.removeEventListener('keydown', handleEscapeKey);
       // Clear the textarea before focus management to prevent visual artifacts
+      // Note: Unsaved changes are intentionally discarded when modal closes without saving
       remarkText.value = '';
       // Return focus to the remarks button that opened the modal
-      const btn = document.querySelector(`.remark-btn[data-item="${currentItemForRemark}"]`);
-      if (btn) {
-        btn.focus();
+      if (currentItemForRemark !== null) {
+        const btn = document.querySelector(`.remark-btn[data-item="${currentItemForRemark}"]`);
+        if (btn) {
+          btn.focus();
+        }
       }
       currentItemForRemark = null;
     }
 
     // Saves the current remark to localStorage for the active item and closes the modal
     function saveRemark() {
-      if (currentItemForRemark !== null) {
-        localStorage.setItem(`remark_${currentItemForRemark}`, remarkText.value);
+      if (currentItemForRemark === null) {
+        console.warn('Cannot save remark: no item is currently selected');
+        return;
       }
+      localStorage.setItem(`remark_${currentItemForRemark}`, remarkText.value);
       closeRemarksModal();
     }
 

@@ -259,6 +259,18 @@
         font-size: 11px;
       }
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
   </style>
 </head>
 <body>
@@ -286,7 +298,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 1</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="1" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="1">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -313,7 +325,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 1</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="2" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="2">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -340,7 +352,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 1</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="3" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="3">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -367,7 +379,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 2</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="4" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="4">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -394,7 +406,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 2</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="5" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="5">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -421,7 +433,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 1</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="6" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="6">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -448,7 +460,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 1</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="7" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="7">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -475,7 +487,7 @@
             <div class="qty-actions">
               <span class="qty-text">Qty: 2</span>
               <input type="checkbox" class="item-checkbox" />
-              <button class="remark-btn" data-item="8" aria-label="Add or view remarks for this item">💬</button>
+              <button class="remark-btn" data-item="8">💬 <span class="sr-only">Add/View Remark</span></button>
             </div>
           </td>
         </tr>
@@ -500,7 +512,7 @@
       <div class="qty-actions">
         <span class="qty-text">Qty: 1</span>
         <input type="checkbox" class="item-checkbox">
-        <button class="remark-btn" data-item="9" aria-label="Add or view remarks for this item">💬</button>
+        <button class="remark-btn" data-item="9">💬 <span class="sr-only">Add/View Remark</span></button>
       </div>
     </td>
 </tr>
@@ -546,6 +558,11 @@
     const cancelBtn = document.getElementById('cancelBtn');
     const saveBtn = document.getElementById('saveBtn');
     let currentItemForRemark = null;
+
+    // Helper function to get the localStorage key for a remark
+    function getRemarkKey(itemNum) {
+      return `remark_${itemNum}`;
+    }
 
     // Handle Escape key to close the modal (attached only when modal is open)
     function handleEscapeKey(event) {
@@ -603,7 +620,7 @@
     // Opens the remarks modal for a given item and loads any previously saved remark from localStorage
     function openRemarksModal(itemNum) {
       currentItemForRemark = itemNum;
-      const savedRemark = localStorage.getItem(`remark_${itemNum}`);
+      const savedRemark = localStorage.getItem(getRemarkKey(itemNum));
       remarkText.value = savedRemark || '';
       remarksModal.classList.add('active');
       // Attach Escape key handler when modal opens
@@ -636,7 +653,7 @@
         console.warn('Cannot save remark: no item is currently selected');
         return;
       }
-      localStorage.setItem(`remark_${currentItemForRemark}`, remarkText.value);
+      localStorage.setItem(getRemarkKey(currentItemForRemark), remarkText.value);
       closeRemarksModal();
     }
 

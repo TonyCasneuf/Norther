@@ -348,111 +348,87 @@
   </div>
 
   <script>
-    // Get all checkboxes
     const checkboxes = document.querySelectorAll('.item-checkbox');
     const expiryInputs = document.querySelectorAll('.item-expiry');
-/*
-    // Function to check if date is expired
-    function isDateExpired(dateString) {
-      const date = new Date(dateString);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return date < today;
-    }
-*/
+    const allItemRows = document.querySelectorAll('.item-row');
+
     function isDateExpired(monthString) {
-  const [year, month] = monthString.split('-');
+      if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {
+        return false;
+      }
 
-  const expiryDate = new Date(year, month, 0); // laatste dag van de maand
-  const today = new Date();
-/*                                                       */
-/*                                                       */
-      
-      checkbox.addEventListener("change", () => {
-    const expiry = expiryInput.value;
+      const match = monthString.match(/^(\d{4})-(\d{2})$/);
+      if (!match) {
+        return false;
+      }
 
-    if (
-        checkbox.checked &&
-        (expiry === "N.A." || expiry === "" || !isExpired(expiry))
-    ) {
-        row.classList.add("checked-green");
-    } else {
-        row.classList.remove("checked-green");
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+
+      // Expiry is valid until the last day of the selected month.
+      const expiryDate = new Date(year, month, 0);
+      expiryDate.setHours(23, 59, 59, 999);
+
+      return expiryDate < new Date();
     }
-});
-  
-  /*                                                       */
-      
-  return expiryDate < today;
-}
-    // Function to update expiry styling
-    function updateExpiryStyle(input) {
-      const itemNum = input.closest('tr').getAttribute('data-item');
-      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
-      const isExpired = isDateExpired(input.value);
 
-      if (isExpired) {
-        input.classList.add('expired');
-        input.classList.remove('valid');
-        rows.forEach(row => {
-          row.classList.add('expired');
-          row.classList.remove('checked');
-        });
-      } else {
-        input.classList.add('valid');
-        input.classList.remove('expired');
-        rows.forEach(row => {
-          row.classList.remove('expired');
-          
-        });
+    function updateItemState(itemNum) {
+      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
+      const checkbox = document.querySelector(`tr[data-item="${itemNum}"] .item-checkbox`);
+      const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
+
+      rows.forEach(row => {
+        row.classList.remove('checked', 'expired');
+      });
+
+      if (expiryInput) {
+        const expired = isDateExpired(expiryInput.value);
+
+        expiryInput.classList.toggle('expired', expired);
+        expiryInput.classList.toggle('valid', !expired);
+
+        if (expired) {
+          rows.forEach(row => row.classList.add('expired'));
+          return;
+        }
+      }
+
+      if (checkbox && checkbox.checked) {
+        rows.forEach(row => row.classList.add('checked'));
       }
     }
 
-    // Check expiry on load
-    expiryInputs.forEach(input => {
-      updateExpiryStyle(input);
+    allItemRows.forEach(row => {
+      const itemNum = row.getAttribute('data-item');
+      updateItemState(itemNum);
     });
-/*
-    // Update expiry on change
+
     expiryInputs.forEach(input => {
+      const itemNum = input.closest('tr').getAttribute('data-item');
+      const savedDate = localStorage.getItem(`expiry_${itemNum}`);
+
+      if (savedDate) {
+        input.value = savedDate;
+      }
+
+      updateItemState(itemNum);
+
       input.addEventListener('change', function() {
-        updateExpiryStyle(this);
+        localStorage.setItem(`expiry_${itemNum}`, this.value);
+        updateItemState(itemNum);
       });
     });
-*/
-    expiryInputs.forEach(input => {
-  const itemNum = input.closest('tr').getAttribute('data-item');
 
-  // Laad opgeslagen datum
-  const savedDate = localStorage.getItem(`expiry_${itemNum}`);
-  if (savedDate) {
-    input.value = savedDate;
-  }
-
-  updateExpiryStyle(input);
-
-  // Opslaan bij wijziging
-  input.addEventListener('change', function() {
-    localStorage.setItem(`expiry_${itemNum}`, this.value);
-    updateExpiryStyle(this);
-  });
-});
-
-    // Handle checkboxes
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        const itemNum = this.closest('tr').getAttribute('data-item');
-        const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
-        const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
-        const isExpired = isDateExpired(expiryInput.value);
+      const itemNum = checkbox.closest('tr').getAttribute('data-item');
+      const savedState = localStorage.getItem(`checked_${itemNum}`);
 
-        rows.forEach(row => {
-          if (this.checked && !isExpired) {
-            row.classList.add('checked');
-          } else {
-            row.classList.remove('checked');
-          }
-        });
+      checkbox.checked = savedState === 'true';
+      updateItemState(itemNum);
+
+      checkbox.addEventListener('change', function() {
+        localStorage.setItem(`checked_${itemNum}`, String(this.checked));
+        updateItemState(itemNum);
       });
     });
   </script>

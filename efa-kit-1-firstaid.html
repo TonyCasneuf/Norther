@@ -547,12 +547,11 @@
     const saveBtn = document.getElementById('saveBtn');
     let currentItemForRemark = null;
 
-    // Sanitize text to prevent XSS attacks - escape HTML entities
-    function sanitizeText(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+    // Handle Escape key to close the modal (attached only when modal is open)
+    function handleEscapeKey(event) {
+      if (event.key === 'Escape') {
+        closeRemarksModal();
+      }
     }
 
     function isDateExpired(monthString) {
@@ -605,10 +604,10 @@
     function openRemarksModal(itemNum) {
       currentItemForRemark = itemNum;
       const savedRemark = localStorage.getItem(`remark_${itemNum}`);
-      // Sanitize the remark content for XSS prevention
-      const sanitizedRemark = sanitizeText(savedRemark || '');
-      remarkText.value = sanitizedRemark;
+      remarkText.value = savedRemark || '';
       remarksModal.classList.add('active');
+      // Attach Escape key handler when modal opens
+      document.addEventListener('keydown', handleEscapeKey);
       // Move focus to the textarea for better accessibility
       remarkText.focus();
     }
@@ -616,6 +615,8 @@
     // Closes the remarks modal, clears the current item reference, and resets the textarea
     function closeRemarksModal() {
       remarksModal.classList.remove('active');
+      // Remove the Escape key handler when modal closes
+      document.removeEventListener('keydown', handleEscapeKey);
       // Clear the textarea before focus management to prevent visual artifacts
       remarkText.value = '';
       // Return focus to the remarks button that opened the modal
@@ -679,13 +680,6 @@
     modalCloseBtn.addEventListener('click', closeRemarksModal);
     cancelBtn.addEventListener('click', closeRemarksModal);
     saveBtn.addEventListener('click', saveRemark);
-
-    // Close modal when Escape key is pressed
-    window.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape' && remarksModal.classList.contains('active')) {
-        closeRemarksModal();
-      }
-    });
   </script>
 </body>
 </html>

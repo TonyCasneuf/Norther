@@ -523,14 +523,14 @@
    <div class="modal-content">
      <div class="modal-header">
        <h2>Add Remark</h2>
-       <button class="modal-close" onclick="closeRemarksModal()">×</button>
+       <button class="modal-close" id="modalCloseBtn">×</button>
      </div>
      <div class="modal-body">
        <textarea id="remarkText" placeholder="Enter your remark here..."></textarea>
      </div>
      <div class="modal-footer">
-       <button class="modal-btn modal-btn-cancel" onclick="closeRemarksModal()">Cancel</button>
-       <button class="modal-btn modal-btn-save" onclick="saveRemark()">Save</button>
+       <button class="modal-btn modal-btn-cancel" id="cancelBtn">Cancel</button>
+       <button class="modal-btn modal-btn-save" id="saveBtn">Save</button>
      </div>
    </div>
   </div>
@@ -542,6 +542,9 @@
     const remarkBtns = document.querySelectorAll('.remark-btn');
     const remarksModal = document.getElementById('remarksModal');
     const remarkText = document.getElementById('remarkText');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const saveBtn = document.getElementById('saveBtn');
     let currentItemForRemark = null;
 
     function isDateExpired(monthString) {
@@ -590,6 +593,7 @@
       }
     }
 
+    // Opens the remarks modal for a given item and loads any previously saved remark from localStorage
     function openRemarksModal(itemNum) {
       currentItemForRemark = itemNum;
       const savedRemark = localStorage.getItem(`remark_${itemNum}`);
@@ -597,12 +601,14 @@
       remarksModal.classList.add('active');
     }
 
+    // Closes the remarks modal, clears the current item reference, and resets the textarea
     function closeRemarksModal() {
       remarksModal.classList.remove('active');
       currentItemForRemark = null;
       remarkText.value = '';
     }
 
+    // Saves the current remark to localStorage for the active item and closes the modal
     function saveRemark() {
       if (currentItemForRemark !== null) {
         localStorage.setItem(`remark_${currentItemForRemark}`, remarkText.value);
@@ -650,6 +656,11 @@
         openRemarksModal(itemNum);
       });
     });
+
+    // Modal button event listeners
+    modalCloseBtn.addEventListener('click', closeRemarksModal);
+    cancelBtn.addEventListener('click', closeRemarksModal);
+    saveBtn.addEventListener('click', saveRemark);
 
     // Close modal when clicking outside of it
     window.addEventListener('click', function(event) {

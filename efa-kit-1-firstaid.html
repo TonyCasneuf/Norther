@@ -608,14 +608,13 @@
       remarksModal.classList.remove('active');
       const itemNum = currentItemForRemark;
       currentItemForRemark = null;
-      remarkText.value = '';
       // Return focus to the remarks button that opened the modal
-      if (itemNum !== null) {
-        const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
-        if (btn) {
-          btn.focus();
-        }
+      const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
+      if (btn) {
+        btn.focus();
       }
+      // Clear the textarea after focus management completes
+      remarkText.value = '';
     }
 
     // Saves the current remark to localStorage for the active item and closes the modal

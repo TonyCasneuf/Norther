@@ -14,7 +14,29 @@
     .container {
       padding: 12px;
     }
+    /* /////////////////////////////////////////////////////////////////// */
+<div class="action-buttons">
+  <button type="button" id="layout-button" class="action-btn">Layout</button>
+  <button type="button" id="submit-content-button" class="action-btn">Submit Content</button>
+</div>
 
+<div id="layout-modal" class="modal-overlay" style="display:none;"
+     role="dialog" aria-modal="true" aria-labelledby="layout-title">
+  <div class="modal-box layout-modal-box">
+    <div class="layout-modal-header">
+      <h3 id="layout-title">First Aid Kit Layout</h3>
+      <button type="button" id="layout-close" class="layout-close"
+              aria-label="Sluit layout">&times;</button>
+    </div>
+
+    <img
+      class="layout-image"
+      src="PLAATS_HIER_DE_DIRECTE_AFBEELDING_URL"
+      alt="Layout van de First Aid Kit"
+    />
+  </div>
+</div>
+    /* /////////////////////////////////////////////////////////////////// */
     table {
       width: 100%;
       border-collapse: collapse;

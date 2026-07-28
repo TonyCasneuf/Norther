@@ -203,3 +203,66 @@ header h2{
     object-fit: contain;
     flex-shrink: 0;
 }
+
+/* Knoppen toevoegen */
+
+.action-buttons {
+  width: min(100%, 720px);
+  margin: 24px auto 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.action-btn {
+  width: 100%;
+  padding: 15px 20px;
+  border: 0;
+  border-radius: 8px;
+  background: #0079c8; /* Vestas-blauw */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #005b9c;
+  transform: translateY(-1px);
+}
+
+.layout-modal-box {
+  width: min(94vw, 1000px);
+  max-height: 90vh;
+  padding: 16px;
+  overflow: auto;
+}
+
+.layout-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.layout-modal-header h3 {
+  margin: 0;
+  color: #0079c8;
+}
+
+.layout-close {
+  border: 0;
+  background: transparent;
+  color: #333;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.layout-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}

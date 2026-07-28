@@ -1358,6 +1358,33 @@
         closeModal();
       }
     });
+    /* //////////////////////////////////////////////////////////// */
+    const layoutButton = document.getElementById('layout-button');
+const layoutModal = document.getElementById('layout-modal');
+const layoutClose = document.getElementById('layout-close');
+
+function closeLayoutModal() {
+  layoutModal.style.display = 'none';
+}
+
+layoutButton.addEventListener('click', () => {
+  layoutModal.style.display = 'flex';
+});
+
+layoutClose.addEventListener('click', closeLayoutModal);
+
+layoutModal.addEventListener('click', (event) => {
+  if (event.target === layoutModal) {
+    closeLayoutModal();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeLayoutModal();
+  }
+});
+      /* //////////////////////////////////////////////////////////// */
   </script>
 </body>
 </html>

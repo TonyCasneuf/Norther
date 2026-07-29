@@ -215,10 +215,11 @@ header h2{
 
 .action-btn {
   width: 100%;
+  margin: 24px auto 12px;
   padding: 20px 24px;
   border: 2px solid #0057A8;
   border-radius: 16px;
-  background: #0079c8; /* Vestas-blauw */
+  background: #0079c8; 
   color: #fff;
   font-size: 19px;
   font-weight: bold;

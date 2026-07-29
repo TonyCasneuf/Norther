@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>First Aid Kit – Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     body {
       margin: 0;
@@ -14,7 +15,8 @@
     .container {
       padding: 12px;
     }
- 
+
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -216,8 +218,12 @@
   <div class="container">
     <table id="inventoryTable">
       <thead>
+          <header>
+            <h1>First Aid Kit</h1>
+            <h2>Inventory</h2>
+          </header>
         <tr>
-          <th>Location</th>
+          <th>LoL</th>
           <th></th>
         </tr>
       </thead>
@@ -1213,6 +1219,29 @@
     </table>
   </div>
 
+  <!-- Action buttons -->
+  <div class="action-buttons">
+    <button type="button" id="layout-button" class="action-btn">View Layout</button>
+    <button type="button" id="submit-changes-button" class="action-btn">Submit Changes</button>
+  </div>
+
+  <!-- Layout Modal -->
+  <div id="layout-modal" class="modal-overlay" style="display:none;"
+       role="dialog" aria-modal="true" aria-labelledby="layout-title">
+    <div class="modal-box layout-modal-box">
+      <div class="layout-modal-header">
+        <h3 id="layout-title">First Aid Kit Layout</h3>
+        <button type="button" id="layout-close" class="layout-close"
+                aria-label="Sluit layout">&times;</button>
+      </div>
+      <img
+        class="layout-image"
+        src="https://github.com/user-attachments/assets/cd4131a6-e650-4c14-9b0d-68f7910ae239"
+        alt="Layout van de First Aid Kit"
+      />
+    </div>
+  </div>
+
   <!-- Remark Modal -->
   <div id="remark-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
     <div class="modal-box">
@@ -1360,31 +1389,30 @@
     });
     /* //////////////////////////////////////////////////////////// */
     const layoutButton = document.getElementById('layout-button');
-const layoutModal = document.getElementById('layout-modal');
-const layoutClose = document.getElementById('layout-close');
+    const layoutModal = document.getElementById('layout-modal');
+    const layoutClose = document.getElementById('layout-close');
 
-function closeLayoutModal() {
-  layoutModal.style.display = 'none';
-}
+    function closeLayoutModal() {
+      layoutModal.style.display = 'none';
+    }
 
-layoutButton.addEventListener('click', () => {
-  layoutModal.style.display = 'flex';
-});
+    layoutButton.addEventListener('click', () => {
+      layoutModal.style.display = 'flex';
+    });
 
-layoutClose.addEventListener('click', closeLayoutModal);
+    layoutClose.addEventListener('click', closeLayoutModal);
 
-layoutModal.addEventListener('click', (event) => {
-  if (event.target === layoutModal) {
-    closeLayoutModal();
-  }
-});
+    layoutModal.addEventListener('click', (event) => {
+      if (event.target === layoutModal) {
+        closeLayoutModal();
+      }
+    });
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    closeLayoutModal();
-  }
-});
-      /* //////////////////////////////////////////////////////////// */
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLayoutModal();
+      }
+    });
   </script>
 </body>
 </html>

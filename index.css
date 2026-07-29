@@ -215,12 +215,13 @@ header h2{
 
 .action-btn {
   width: 100%;
-  padding: 15px 20px;
-  border: 0;
-  border-radius: 8px;
-  background: #0079c8; /* Vestas-blauw */
+  margin: 24px 12px;
+  padding: 20px 24px;
+  border: 2px solid #0057A8;
+  border-radius: 16px;
+  background: #0079c8; 
   color: #fff;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
@@ -264,5 +265,7 @@ header h2{
   display: block;
   width: 100%;
   height: auto;
+  max-height: calc(85vh - 80px);
+  object-fit: contain;
   border-radius: 6px;
 }

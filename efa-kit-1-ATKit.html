@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOTO Kit Inventory</title>
+
+<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<header>
+    <h1>AT Kit</h1>
+    <h2>Inventory</h2>
+</header>
+
+<div class="container">
+<table id="inventoryTable">
+    <tbody>
+
+        <tr class="item-row" data-item="1">
+          <td class="name-cell">Voltage Tester</td>
+            <td class="item-check">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="1">📝</button>
+            </td>
+        </tr>
+
+        <tr class="item-row" data-item="2">
+            <td class="item-name">Prove Unit</td>
+            <td class="item-check">
+                <input type="checkbox"
+                       class="item-checkbox">
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="2">📝</button>
+            </td>
+        </tr>
+
+        <tr class="item-row" data-item="3">
+            <td class="item-name">LOTO Box</td>
+            <td class="item-check">
+                <input type="checkbox"
+                       class="item-checkbox">
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="3">📝</button>
+            </td>
+        </tr>
+
+        <tr class="item-row" data-item="4">
+            <td class="item-name">Lockout Locks</td>
+            <td class="item-check">
+                <input type="checkbox"
+                       class="item-checkbox">
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="4">📝</button>
+            </td>
+        </tr>
+
+        <tr class="item-row" data-item="5">
+            <td class="item-name">Lockout Accessories</td>
+            <td class="item-check">
+                <input type="checkbox"
+                       class="item-checkbox">
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="5">📝</button>
+            </td>
+        </tr>
+
+        <tr class="item-row" data-item="6">
+            <td class="item-name">HV Gloves</td>
+            <td class="item-check">
+                <input type="checkbox"
+                       class="item-checkbox">
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="6">📝</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="action-buttons">
+    <button type="button" id="submit-changes-button" class="action-btn">
+        Submit Changes
+    </button>
+</div>
+
+<div id="remark-modal"
+     class="modal-overlay"
+     style="display:none;"
+     role="dialog"
+     aria-modal="true">
+
+    <div class="modal-box">
+
+        <h3>
+            Opmerking -
+            <span id="modal-item-name"></span>
+        </h3>
+
+        <textarea
+            id="remark-text"
+            placeholder="Voer hier uw opmerking in..."></textarea>
+
+        <div class="modal-buttons">
+            <button id="modal-cancel" class="btn-cancel">
+                Annuleren
+            </button>
+
+            <button id="modal-save" class="btn-save">
+                Opslaan
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+// CHECKBOXES
+
+function updateItemState(itemNum) {
+    const row = document.querySelector(`[data-item="${itemNum}"]`);
+    const checkbox = row.querySelector('.item-checkbox');
+
+    row.classList.toggle('checked', checkbox.checked);
+}
+
+document.querySelectorAll('.item-checkbox').forEach(checkbox => {
+
+    const itemNum = checkbox.closest('.item-row').dataset.item;
+
+    checkbox.checked =
+        localStorage.getItem(`checked_${itemNum}`) === 'true';
+
+    updateItemState(itemNum);
+
+    checkbox.addEventListener('change', function () {
+
+        localStorage.setItem(
+            `checked_${itemNum}`,
+            this.checked
+        );
+
+        updateItemState(itemNum);
+
+    });
+
+});
+
+// REMARKS
+
+const remarkModal = document.getElementById('remark-modal');
+const remarkText = document.getElementById('remark-text');
+const modalItemName = document.getElementById('modal-item-name');
+
+let activeRemarkItem = null;
+
+function closeModal() {
+    remarkModal.style.display = 'none';
+    activeRemarkItem = null;
+}
+
+function updateRemarkButton(itemNum) {
+
+    const btn =
+        document.querySelector(
+            `.remark-btn[data-item="${itemNum}"]`
+        );
+
+    const remark =
+        localStorage.getItem(`remark_${itemNum}`);
+
+    btn.classList.toggle(
+        'has-remark',
+        remark && remark.trim()
+    );
+
+}
+
+document.querySelectorAll('.remark-btn').forEach(btn => {
+
+    const itemNum = btn.dataset.item;
+
+    updateRemarkButton(itemNum);
+
+    btn.addEventListener('click', () => {
+
+        activeRemarkItem = itemNum;
+
+        const itemName =
+            document.querySelector(
+                `[data-item="${itemNum}"] .item-name`
+            ).textContent;
+
+        modalItemName.textContent = itemName;
+
+        remarkText.value =
+            localStorage.getItem(
+                `remark_${itemNum}`
+            ) || '';
+
+        remarkModal.style.display = 'flex';
+
+    });
+
+});
+
+document.getElementById('modal-save')
+.addEventListener('click', () => {
+
+    localStorage.setItem(
+        `remark_${activeRemarkItem}`,
+        remarkText.value
+    );
+
+    updateRemarkButton(activeRemarkItem);
+
+    closeModal();
+
+});
+
+document.getElementById('modal-cancel')
+.addEventListener('click', closeModal);
+
+remarkModal.addEventListener('click', event => {
+
+    if (event.target === remarkModal) {
+        closeModal();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

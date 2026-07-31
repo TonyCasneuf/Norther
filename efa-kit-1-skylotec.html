@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>First Aid Kit – Inventory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <header>
+      <h1>First Aid Kit</h1>
+      <h2>Inventory</h2>
+  </header>
+  <div class="container">
+    <table id="inventoryTable">
+      <thead>
+      </thead>
+      <tbody>
+ 
+        <!-- ITEM 1 -->
+        <!-- Row 1 - Location & Name -->
+        <tr class="item-row" data-item="1">
+          <td class="location-cell" rowspan="3">
+            <span class="location-line"></span>
+            <span class="location-line">Separate</span>
+          </td>
+          <td class="name-cell">Cervical collar </td>
+        </tr>
+        <!-- Row 2 - Qty + Checkbox + Remark -->
+        <tr class="item-row" data-item="40">
+          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="40" title="Opmerking toevoegen">📝</button></span></td>
+        </tr>
+        <!-- Row 3 - Expiry Date -->
+        <tr class="item-row" data-item="40">
+          <td class="expiry-cell">
+            Expiry: N.A
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="action-buttons">
+    <button type="button" id="submit-changes-button" class="action-btn">Submit Changes</button>
+  </div>
+
+  <!-- Remark Modal -->
+  <div id="remark-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+    <div class="modal-box">
+      <h3 id="modal-heading">Opmerking – <span id="modal-item-name"></span></h3>
+      <textarea id="remark-text" aria-label="Opmerking tekst" placeholder="Voer hier uw opmerking in..."></textarea>
+      <div class="modal-buttons">
+        <button class="btn-cancel" id="modal-cancel">Annuleren</button>
+        <button class="btn-save" id="modal-save">Opslaan</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    const expiryInputs = document.querySelectorAll('.item-expiry');
+    const allItemRows = document.querySelectorAll('.item-row');
+
+    function isDateExpired(monthString) {
+      if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {
+        return false;
+      }
+
+      const match = monthString.match(/^(\d{4})-(\d{2})$/);
+      if (!match) {
+        return false;
+      }
+
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+
+      // Expiry is valid until the last day of the selected month.
+      const expiryDate = new Date(year, month, 0);
+      expiryDate.setHours(23, 59, 59, 999);
+
+      return expiryDate < new Date();
+    }
+
+    function updateItemState(itemNum) {
+      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
+      const checkbox = document.querySelector(`tr[data-item="${itemNum}"] .item-checkbox`);
+      const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
+
+      rows.forEach(row => {
+        row.classList.remove('checked', 'expired');
+      });
+
+      if (expiryInput) {
+        const expired = isDateExpired(expiryInput.value);
+
+        expiryInput.classList.toggle('expired', expired);
+        expiryInput.classList.toggle('valid', !expired);
+
+        if (expired) {
+          rows.forEach(row => row.classList.add('expired'));
+          return;
+        }
+      }
+
+      if (checkbox && checkbox.checked) {
+        rows.forEach(row => row.classList.add('checked'));
+      }
+    }
+
+    allItemRows.forEach(row => {
+      const itemNum = row.getAttribute('data-item');
+      updateItemState(itemNum);
+    });
+
+    expiryInputs.forEach(input => {
+      const itemNum = input.closest('tr').getAttribute('data-item');
+      const savedDate = localStorage.getItem(`expiry_${itemNum}`);
+
+      if (savedDate) {
+        input.value = savedDate;
+      }
+
+      updateItemState(itemNum);
+
+      input.addEventListener('change', function() {
+        localStorage.setItem(`expiry_${itemNum}`, this.value);
+        updateItemState(itemNum);
+      });
+    });
+
+    checkboxes.forEach(checkbox => {
+      const itemNum = checkbox.closest('tr').getAttribute('data-item');
+      const savedState = localStorage.getItem(`checked_${itemNum}`);
+
+      checkbox.checked = savedState === 'true';
+      updateItemState(itemNum);
+
+      checkbox.addEventListener('change', function() {
+        localStorage.setItem(`checked_${itemNum}`, String(this.checked));
+        updateItemState(itemNum);
+      });
+    });
+
+    // Remark buttons
+    const remarkModal = document.getElementById('remark-modal');
+    const remarkText = document.getElementById('remark-text');
+    const modalItemName = document.getElementById('modal-item-name');
+    let activeRemarkItem = null;
+
+    function updateRemarkButton(itemNum) {
+      const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
+      if (!btn) return;
+      const saved = localStorage.getItem(`remark_${itemNum}`);
+      btn.classList.toggle('has-remark', saved && saved.trim());
+    }
+
+    function closeModal() {
+      remarkModal.style.display = 'none';
+      activeRemarkItem = null;
+    }
+
+    document.querySelectorAll('.remark-btn').forEach(btn => {
+      const itemNum = btn.getAttribute('data-item');
+      updateRemarkButton(itemNum);
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        activeRemarkItem = itemNum;
+        const nameCell = document.querySelector(`tr[data-item="${itemNum}"] .name-cell`);
+        modalItemName.textContent = nameCell ? nameCell.textContent.trim() : `Item ${itemNum}`;
+        remarkText.value = localStorage.getItem(`remark_${itemNum}`) || '';
+        remarkModal.style.display = 'flex';
+        remarkText.focus();
+      });
+    });
+
+    document.getElementById('modal-save').addEventListener('click', function() {
+      if (activeRemarkItem !== null) {
+        localStorage.setItem(`remark_${activeRemarkItem}`, remarkText.value);
+        updateRemarkButton(activeRemarkItem);
+      }
+      closeModal();
+    });
+
+    document.getElementById('modal-cancel').addEventListener('click', closeModal);
+
+    remarkModal.addEventListener('click', function(e) {
+      if (e.target === remarkModal) {
+        closeModal();
+      }
+    });
+    /* //////////////////////////////////////////////////////////// */
+    const layoutButton = document.getElementById('layout-button');
+    const layoutModal = document.getElementById('layout-modal');
+    const layoutClose = document.getElementById('layout-close');
+
+    function closeLayoutModal() {
+      layoutModal.style.display = 'none';
+    }
+
+    layoutButton.addEventListener('click', () => {
+      layoutModal.style.display = 'flex';
+    });
+
+    layoutClose.addEventListener('click', closeLayoutModal);
+
+    layoutModal.addEventListener('click', (event) => {
+      if (event.target === layoutModal) {
+        closeLayoutModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLayoutModal();
+      }
+    });
+  </script>
+</body>
+</html>

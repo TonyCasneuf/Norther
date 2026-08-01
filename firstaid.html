@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <title>First Aid Kit – Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -15,996 +14,9 @@
   </header>
   <div class="container">
     <table id="inventoryTable">
-      <thead>
-      </thead>
-      <tbody>
-        <!-- ITEM 1 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="1">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Oropharyngeal airway Size 2 </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="1">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="1" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="1">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2026-12" />
-          </td>
-        </tr>
-
-        <!-- ITEM 2 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="2">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Oropharyngeal airway Size 3 </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="2">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="2" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="2">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-02" />
-          </td>
-        </tr>
-        
-        <!-- ITEM 3 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="3">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Oropharyngeal airway Size 4 </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="3">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="3" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="3">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-02" />
-          </td>
-        </tr>
-        
-        <!-- ITEM 4 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="4">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Nasopharyngeal Size 6 </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="4">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="4" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="4">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-04" />
-          </td>
-        </tr>
-        
-        <!-- ITEM 5 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="5">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Nasopharyngeal Size 7 </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="5">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="5" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="5">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-04" />
-          </td>
-        </tr>
-        
-        <!-- ITEM 6 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="6">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">5G Lubricant Sachet </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="6">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="6" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="6">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-04" />
-          </td>
-        </tr>
-               
-        <!-- ITEM 7 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="7">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Manual suction device </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="7">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="7" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="7">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-04" />
-          </td>
-        </tr>
-                       
-        <!-- ITEM 8 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="8">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">A</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="8">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="8" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="8">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-04" />
-          </td>
-        </tr>
-        
-         <!-- ITEM 9 --> <!-- Pouch B -->
-<tr class="item-row" data-item="9">
-    <td class="location-cell" rowspan="3">
-        Pouch<br>B
-    </td>
-    <td class="name-cell">Pulse oximeter </td>
-</tr>
-
-<tr class="item-row" data-item="9">
-    <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd"><button class="remark-btn" data-item="9" title="Opmerking toevoegen">📝</button></span></td>
-</tr>
-
-<tr class="item-row" data-item="9">
-    <td class="expiry-cell">
-        Expiry: N.A
-    </td>
-</tr>
-        <!-- ITEM 10 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="10">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">B</span>
-          </td>
-          <td class="name-cell">Bag-valve-mask </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="10">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="10" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="10">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-05" />
-          </td>
-        </tr>
-
-        <!-- ITEM 11 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="11">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">B</span>
-          </td>
-          <td class="name-cell">Russell Chest Seal </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="11">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="11" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="11">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2026-11" />
-          </td>
-        </tr>
-        
-        <!-- ITEM 12 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="12">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">B</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="12">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="11" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="12">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-      
-        <!-- ITEM 13 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="13">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Wound dressing, pad size 200x150mm </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="13">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="13" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="13">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-02" />
-          </td>
-        </tr>
-
-        <!-- ITEM 14 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="14">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Wound dressing, pad size 280x200mm </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="14">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="14" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="14">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-02" />
-          </td>
-        </tr>
-
-        <!-- ITEM 15 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="15">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="15">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="15" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="15">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 43 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="43">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Trauma Dressing 6"  </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="43">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="43" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="43">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2028-02" />
-          </td>
-        </tr>
-
-        <!-- ITEM 44 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="44">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Trauma Dressing 10cm x 400cm</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="44">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="44" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="44">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-05" />
-          </td>
-        </tr>
-
-        <!-- ITEM 45 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="45">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Haemostatic gauze </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="45">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="45" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="45">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2028-06" />
-          </td>
-        </tr>
-
-        <!-- ITEM 46 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="46">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Tourniquet </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="46">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="46" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="46">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-                <!-- ITEM 47 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="47">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Tough cut scissors </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="47">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="47" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="47">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-                <!-- ITEM 48 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="48">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">C</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="48">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="48" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="48">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 16 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="16">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Triangular Bandage </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="16">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="16" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <tr class="item-row" data-item="16">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 17 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="17">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Elastic bandage </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="17">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="17" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="17">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 18 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="18">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Elastic self-adhesive bandage </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="18">
-          <td class="qty-cell">Qty: 3 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="18" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="18">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 19 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="19">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Omni Splint (Prometheus)</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="19">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="19" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="19">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-07" />
-          </td>
-        </tr>
-
-        <!-- ITEM 20 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="20">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Cling film </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="20">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="20" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="20">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 21 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="21">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Ice packs</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="21">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="21" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="21">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2026-06" />
-          </td>
-        </tr>
-
-        <!-- ITEM 22 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="22">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">D</span>
-          </td>
-          <td class="name-cell">Gloves</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="22">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="22" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="22">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 23 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="23">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">E</span>
-          </td>
-          <td class="name-cell">Blanket Vacuum Packed </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="23">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="23" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="23">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-12" />
-          </td>
-        </tr>
-
-        <!-- ITEM 24 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="24">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">E</span>
-          </td>
-          <td class="name-cell">Pelvic binder (Splint)</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="24">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="24" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="24">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 25 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="25">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">E</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="25">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="25" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="25">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 26 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="26">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">AED</span>
-          </td>
-          <td class="name-cell">AED (Philips HeartStart FRx) </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="26">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="26" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="26">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 27 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="27">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">AED</span>
-          </td>
-          <td class="name-cell">Razor</td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="27">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="27" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="27">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 28 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="28">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">AED</span>
-          </td>
-          <td class="name-cell">Gloves </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="28">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="28" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="28">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 29 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="29">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">AED</span>
-          </td>
-          <td class="name-cell">Tough cut scissors </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="29">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="29" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="29">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 30 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="30">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Box plasters </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="30">
-          <td class="qty-cell">Qty: +20 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="30" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="30">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-06" />
-          </td>
-        </tr>
-
-        <!-- ITEM 31 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="31">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Medical tape </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="31">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="31" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="31">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 32 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="32">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Emergency foil blankets </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="32">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="31" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="32">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 33 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="33">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Burn gel </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="33">
-          <td class="qty-cell">Qty: 2 x 120ml <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="33" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="33">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-03" />
-          </td>
-        </tr>
-
-        <!-- ITEM 34 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="34">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Cleaning wipes </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="34">
-          <td class="qty-cell">Qty: 10 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="34" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="34">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2025-06" />
-          </td>
-        </tr>
-
-        <!-- ITEM 35 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="35">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Sterowash sodium chloride solution  </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="35">
-          <td class="qty-cell">Qty: 500ml <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="35" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="35">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2027-06" />
-          </td>
-        </tr>
-
-        <!-- ITEM 36 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="36">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">F</span>
-          </td>
-          <td class="name-cell">Gloves  </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="36">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="36" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="36">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 37 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="37">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">G</span>
-          </td>
-          <td class="name-cell">Clinical waste bags </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="37">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="37" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="37">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 38 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="38">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line">Pouch</span>
-            <span class="location-line">G</span>
-          </td>
-          <td class="name-cell">Gloves  </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="38">
-          <td class="qty-cell">Qty: 2 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="38" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="38">
-          <td class="expiry-cell">
-            <span class="expiry-label">Expiry:</span>
-            <input type="month" class="expiry-input item-expiry" value="2029-01" />
-          </td>
-        </tr>
-
-        <!-- ITEM 39 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="39">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line"></span>
-            <span class="location-line">Separate</span>
-          </td>
-          <td class="name-cell">Clipboard </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="39">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="39" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="39">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 40 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="40">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line"></span>
-            <span class="location-line">Separate</span>
-          </td>
-          <td class="name-cell">Cervical collar </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="40">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="40" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="40">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 41 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="41">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line"></span>
-            <span class="location-line">Clipboard</span>
-          </td>
-          <td class="name-cell">Pencil </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="41">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="41" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="41">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
-        <!-- ITEM 42 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="42">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line"></span>
-            <span class="location-line">Clipboard</span>
-          </td>
-          <td class="name-cell">Patient Report Forms </td>
-        </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="42">
-          <td class="qty-cell">Qty: 5 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="42" title="Opmerking toevoegen">📝</button></span></td>
-        </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="42">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
+      <thead></thead>
+      <tbody id="inventoryBody">
+        <!-- Items will be generated dynamically -->
       </tbody>
     </table>
   </div>
@@ -1045,34 +57,149 @@
   </div>
 
   <script>
-    const checkboxes = document.querySelectorAll('.item-checkbox');
-    const expiryInputs = document.querySelectorAll('.item-expiry');
-    const allItemRows = document.querySelectorAll('.item-row');
-    
-    const kit = new URLSearchParams(window.location.search).get("kit");
-      document.getElementById("atLink").href =
-    `   atkit.html?kit=${kit}`;
-      document.getElementById("rescueLink").href =
-    `rescuekit.html?kit=${kit}`;
-      document.getElementById("firstAidLink").href =
-    `firstaid.html?kit=${kit}`;
-      document.getElementById("skylotecLink").href =
-    `skylotec.html?kit=${kit}`;
+    // ========== DATA ARRAY - All items in one place ==========
+    const items = [
+      { location: "Pouch A", name: "Oropharyngeal airway Size 2", qty: 1, expiry: "2026-12" },
+      { location: "Pouch A", name: "Oropharyngeal airway Size 3", qty: 1, expiry: "2027-02" },
+      { location: "Pouch A", name: "Oropharyngeal airway Size 4", qty: 1, expiry: "2027-02" },
+      { location: "Pouch A", name: "Nasopharyngeal Size 6", qty: 2, expiry: "2027-04" },
+      { location: "Pouch A", name: "Nasopharyngeal Size 7", qty: 2, expiry: "2027-04" },
+      { location: "Pouch A", name: "5G Lubricant Sachet", qty: 1, expiry: "2027-04" },
+      { location: "Pouch A", name: "Manual suction device", qty: 1, expiry: "2027-04" },
+      { location: "Pouch A", name: "Gloves", qty: 2, expiry: "2027-04" },
+      { location: "", name: "Pulse oximeter", qty: 1, expiry: "N.A" },
+      { location: "Pouch B", name: "Bag-valve-mask", qty: 1, expiry: "2027-05" },
+      { location: "Pouch B", name: "Russell Chest Seal", qty: 1, expiry: "2026-11" },
+      { location: "Pouch B", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch C", name: "Wound dressing, pad size 200x150mm", qty: 2, expiry: "2027-02" },
+      { location: "Pouch C", name: "Wound dressing, pad size 280x200mm", qty: 2, expiry: "2027-02" },
+      { location: "Pouch C", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch C", name: "Trauma Dressing 6\"", qty: 2, expiry: "2028-02" },
+      { location: "Pouch C", name: "Trauma Dressing 10cm x 400cm", qty: 2, expiry: "2027-05" },
+      { location: "Pouch C", name: "Haemostatic gauze", qty: 2, expiry: "2028-06" },
+      { location: "Pouch C", name: "Tourniquet", qty: 2, expiry: "N.A" },
+      { location: "Pouch C", name: "Tough cut scissors", qty: 1, expiry: "N.A" },
+      { location: "Pouch C", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch D", name: "Triangular Bandage", qty: 2, expiry: "N.A" },
+      { location: "Pouch D", name: "Elastic bandage", qty: 2, expiry: "N.A" },
+      { location: "Pouch D", name: "Elastic self-adhesive bandage", qty: 3, expiry: "N.A" },
+      { location: "Pouch D", name: "Omni Splint (Prometheus)", qty: 2, expiry: "2029-07" },
+      { location: "Pouch D", name: "Cling film", qty: 1, expiry: "N.A" },
+      { location: "Pouch D", name: "Ice packs", qty: 2, expiry: "2026-06" },
+      { location: "Pouch D", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch E", name: "Blanket Vacuum Packed", qty: 1, expiry: "2029-12" },
+      { location: "Pouch E", name: "Pelvic binder (Splint)", qty: 1, expiry: "N.A" },
+      { location: "Pouch E", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch AED", name: "AED (Philips HeartStart FRx)", qty: 2, expiry: "2027-01" },
+      { location: "Pouch AED", name: "Razor", qty: 2, expiry: "N.A" },
+      { location: "Pouch AED", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch AED", name: "Tough cut scissors", qty: 1, expiry: "N.A" },
+      { location: "Pouch F", name: "Box plasters", qty: 1, expiry: "2027-06" },
+      { location: "Pouch F", name: "Medical tape", qty: 1, expiry: "N.A" },
+      { location: "Pouch F", name: "Emergency foil blankets", qty: 2, expiry: "N.A" },
+      { location: "Pouch F", name: "Burn gel", qty: 2, expiry: "2027-03" },
+      { location: "Pouch F", name: "Cleaning wipes", qty: 10, expiry: "2025-06" },
+      { location: "Pouch F", name: "Sterowash sodium chloride solution", qty: 500, expiry: "2027-06" },
+      { location: "Pouch F", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "Pouch G", name: "Clinical waste bags", qty: 2, expiry: "N.A" },
+      { location: "Pouch G", name: "Gloves", qty: 2, expiry: "2029-01" },
+      { location: "", name: "Clipboard", qty: 1, expiry: "N.A" },
+      { location: "", name: "Cervical collar", qty: 1, expiry: "N.A" },
+      { location: "", name: "Pencil", qty: 1, expiry: "N.A" },
+      { location: "", name: "Patient Report Forms", qty: 5, expiry: "N.A" }
+    ];
 
+    // ========== INITIALIZATION ==========
+    const kit = new URLSearchParams(window.location.search).get("kit");
+    document.getElementById("atLink").href = `atkit.html?kit=${kit}`;
+    document.getElementById("rescueLink").href = `rescuekit.html?kit=${kit}`;
+    document.getElementById("firstAidLink").href = `firstaid.html?kit=${kit}`;
+    document.getElementById("skylotecLink").href = `skylotec.html?kit=${kit}`;
+
+    // ========== RENDER ITEMS DYNAMICALLY ==========
+    const tbody = document.getElementById('inventoryBody');
+    items.forEach((item, index) => {
+      const itemNum = index + 1;
+      const locationParts = item.location.split(' ');
+      
+      // Row 1: Location & Name
+      const row1 = document.createElement('tr');
+      row1.className = 'item-row';
+      row1.setAttribute('data-item', itemNum);
+      
+      if (item.location) {
+        const locationCell = document.createElement('td');
+        locationCell.className = 'location-cell';
+        locationCell.rowSpan = 3;
+        locationParts.forEach(part => {
+          const span = document.createElement('span');
+          span.className = 'location-line';
+          span.textContent = part;
+          locationCell.appendChild(span);
+        });
+        row1.appendChild(locationCell);
+      }
+      
+      const nameCell = document.createElement('td');
+      nameCell.className = 'name-cell';
+      nameCell.textContent = item.name;
+      row1.appendChild(nameCell);
+      
+      // Row 2: Qty + Checkbox + Remark
+      const row2 = document.createElement('tr');
+      row2.className = 'item-row';
+      row2.setAttribute('data-item', itemNum);
+      
+      const qtyCell = document.createElement('td');
+      qtyCell.className = 'qty-cell';
+      qtyCell.innerHTML = `Qty: ${item.qty} <span class="qty-check-wrap">
+        <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
+        <button class="remark-btn" data-item="${itemNum}" title="Opmerking toevoegen">📝</button>
+      </span>`;
+      row2.appendChild(qtyCell);
+      
+      // Row 3: Expiry Date
+      const row3 = document.createElement('tr');
+      row3.className = 'item-row';
+      row3.setAttribute('data-item', itemNum);
+      
+      const expiryCell = document.createElement('td');
+      expiryCell.className = 'expiry-cell';
+      
+      if (item.expiry === 'N.A' || item.expiry === 'N.A.') {
+        expiryCell.textContent = 'Expiry: N.A';
+      } else {
+        const expiryLabel = document.createElement('span');
+        expiryLabel.className = 'expiry-label';
+        expiryLabel.textContent = 'Expiry: ';
+        
+        const expiryInput = document.createElement('input');
+        expiryInput.type = 'month';
+        expiryInput.className = 'expiry-input item-expiry';
+        expiryInput.value = item.expiry;
+        
+        expiryCell.appendChild(expiryLabel);
+        expiryCell.appendChild(expiryInput);
+      }
+      
+      row3.appendChild(expiryCell);
+      
+      tbody.appendChild(row1);
+      tbody.appendChild(row2);
+      tbody.appendChild(row3);
+    });
+
+    // ========== HELPER FUNCTIONS ==========
     function isDateExpired(monthString) {
       if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {
         return false;
       }
 
       const match = monthString.match(/^(\d{4})-(\d{2})$/);
-      if (!match) {
-        return false;
-      }
+      if (!match) return false;
 
       const year = Number(match[1]);
       const month = Number(match[2]);
-
-      // Expiry is valid until the last day of the selected month.
       const expiryDate = new Date(year, month, 0);
       expiryDate.setHours(23, 59, 59, 999);
 
@@ -1088,6 +215,7 @@
         row.classList.remove('checked', 'expired');
       });
 
+      // Check if expired first - expired takes precedence
       if (expiryInput) {
         const expired = isDateExpired(expiryInput.value);
 
@@ -1096,20 +224,22 @@
 
         if (expired) {
           rows.forEach(row => row.classList.add('expired'));
-          return;
+          return; // Don't show green if expired
         }
       }
 
+      // Only show green (checked) if NOT expired and checkbox is checked
       if (checkbox && checkbox.checked) {
         rows.forEach(row => row.classList.add('checked'));
       }
     }
 
-    allItemRows.forEach(row => {
-      const itemNum = row.getAttribute('data-item');
-      updateItemState(itemNum);
-    });
+    // ========== INITIALIZE CHECKBOXES AND EXPIRY INPUTS ==========
+    const checkboxes = document.querySelectorAll('.item-checkbox');
+    const expiryInputs = document.querySelectorAll('.item-expiry');
+    const allItemRows = document.querySelectorAll('.item-row');
 
+    // Load saved states and attach event listeners
     expiryInputs.forEach(input => {
       const itemNum = input.closest('tr').getAttribute('data-item');
       const savedDate = localStorage.getItem(`expiry_${itemNum}`);
@@ -1139,7 +269,7 @@
       });
     });
 
-    // Remark buttons
+    // ========== REMARK MODAL FUNCTIONALITY ==========
     const remarkModal = document.getElementById('remark-modal');
     const remarkText = document.getElementById('remark-text');
     const modalItemName = document.getElementById('modal-item-name');
@@ -1187,7 +317,8 @@
         closeModal();
       }
     });
-    /* //////////////////////////////////////////////////////////// */
+
+    // ========== LAYOUT MODAL FUNCTIONALITY ==========
     const layoutButton = document.getElementById('layout-button');
     const layoutModal = document.getElementById('layout-modal');
     const layoutClose = document.getElementById('layout-close');
@@ -1212,6 +343,43 @@
       if (event.key === 'Escape') {
         closeLayoutModal();
       }
+    });
+
+    // ========== EXPORT TO JSON FUNCTIONALITY ==========
+    document.getElementById('submit-changes-button').addEventListener('click', function() {
+      const kitData = {
+        kitNumber: kit || "unknown",
+        kitType: "First Aid",
+        lastCheck: new Date().toISOString(),
+        items: []
+      };
+
+      items.forEach((item, index) => {
+        const itemNum = index + 1;
+        const checked = localStorage.getItem(`checked_${itemNum}`) === 'true';
+        const expiry = localStorage.getItem(`expiry_${itemNum}`) || item.expiry;
+        const remark = localStorage.getItem(`remark_${itemNum}`) || '';
+        
+        kitData.items.push({
+          id: itemNum,
+          location: item.location,
+          name: item.name,
+          quantity: item.qty,
+          expiry: expiry,
+          checked: checked,
+          expired: isDateExpired(expiry),
+          remark: remark
+        });
+      });
+
+      // Save to localStorage
+      localStorage.setItem(`firstaid_kit_${kit}_data`, JSON.stringify(kitData));
+      
+      // Also log to console for debugging
+      console.log('Kit data saved:', kitData);
+      
+      // Show confirmation
+      alert('Check bevestigd! Data opgeslagen.');
     });
   </script>
 </body>

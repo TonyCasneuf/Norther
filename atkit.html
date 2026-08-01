@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOTO Kit Inventory</title>
-
+<title>AT Kit Inventory</title>
 <link rel="stylesheet" href="index.css">
 </head>
 
@@ -17,76 +16,8 @@
 
 <div class="container">
 <table id="inventoryTable">
-    <tbody>
-
-        <tr class="item-row" data-item="1">
-          <td class="name-cell">Voltage Tester</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="1">📝</button>
-            </td>
-        </tr>
-
-        <tr class="item-row" data-item="2">
-          <td class="name-cell">Prove Unit</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="2">📝</button>
-            </td>
-        </tr>
-
-        <tr class="item-row" data-item="3">
-          <td class="name-cell">Loto Box</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="3">📝</button>
-            </td>
-        </tr>
-
-                <tr class="item-row" data-item="4">
-          <td class="name-cell">Lockout Locks</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="4">📝</button>
-            </td>
-        </tr>
-
-        <tr class="item-row" data-item="5">
-            <td class="name-cell">Lockout Accessories</td>
-            <td class="item-check">
-                <input type="checkbox"
-                       class="item-checkbox">
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="5">📝</button>
-            </td>
-        </tr>
-
-        <tr class="item-row" data-item="6">
-            <td class="name-cell">HV Gloves</td>
-            <td class="item-check">
-                <input type="checkbox"
-                       class="item-checkbox">
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="6">📝</button>
-            </td>
-        </tr>
-
+    <tbody id="inventoryBody">
+        <!-- Items will be generated dynamically -->
     </tbody>
 </table>
 
@@ -127,123 +58,153 @@
 </div>
 
 <script>
+// ========== DATA ARRAY - All items in one place ==========
+const items = [
+  { name: "Voltage Tester" },
+  { name: "Prove Unit" },
+  { name: "Loto Box" },
+  { name: "Lockout Locks" },
+  { name: "Lockout Accessories" },
+  { name: "HV Gloves" }
+];
 
-// CHECKBOXES
+// ========== INITIALIZATION ==========
+const kit = new URLSearchParams(window.location.search).get("kit");
 
-function updateItemState(itemNum) {
-    const row = document.querySelector(`[data-item="${itemNum}"]`);
-    const checkbox = row.querySelector('.item-checkbox');
-
-    row.classList.toggle('checked', checkbox.checked);
-}
-
-document.querySelectorAll('.item-checkbox').forEach(checkbox => {
-
-    const itemNum = checkbox.closest('.item-row').dataset.item;
-
-    checkbox.checked =
-        localStorage.getItem(`checked_${itemNum}`) === 'true';
-
-    updateItemState(itemNum);
-
-    checkbox.addEventListener('change', function () {
-
-        localStorage.setItem(
-            `checked_${itemNum}`,
-            this.checked
-        );
-
-        updateItemState(itemNum);
-
-    });
-
+// ========== RENDER ITEMS DYNAMICALLY ==========
+const tbody = document.getElementById('inventoryBody');
+items.forEach((item, index) => {
+  const itemNum = index + 1;
+  
+  const row = document.createElement('tr');
+  row.className = 'item-row';
+  row.setAttribute('data-item', itemNum);
+  
+  const nameCell = document.createElement('td');
+  nameCell.className = 'name-cell';
+  nameCell.textContent = item.name;
+  
+  const checkCell = document.createElement('td');
+  checkCell.className = 'item-check';
+  checkCell.innerHTML = '<input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />';
+  
+  const remarkCell = document.createElement('td');
+  remarkCell.className = 'item-remark';
+  remarkCell.innerHTML = `<button class="remark-btn" data-item="${itemNum}">📝</button>`;
+  
+  row.appendChild(nameCell);
+  row.appendChild(checkCell);
+  row.appendChild(remarkCell);
+  tbody.appendChild(row);
 });
 
-// REMARKS
+// ========== HELPER FUNCTIONS (NO EXPIRY LOGIC NEEDED) ==========
+function updateItemState(itemNum) {
+  const row = document.querySelector(`tr[data-item="${itemNum}"]`);
+  const checkbox = document.querySelector(`tr[data-item="${itemNum}"] .item-checkbox`);
 
+  row.classList.remove('checked');
+
+  if (checkbox && checkbox.checked) {
+    row.classList.add('checked');
+  }
+}
+
+// ========== INITIALIZE CHECKBOXES ==========
+const checkboxes = document.querySelectorAll('.item-checkbox');
+
+checkboxes.forEach(checkbox => {
+  const itemNum = checkbox.closest('tr').getAttribute('data-item');
+  const savedState = localStorage.getItem(`at_checked_${itemNum}`);
+
+  checkbox.checked = savedState === 'true';
+  updateItemState(itemNum);
+
+  checkbox.addEventListener('change', function() {
+    localStorage.setItem(`at_checked_${itemNum}`, String(this.checked));
+    updateItemState(itemNum);
+  });
+});
+
+// ========== REMARK MODAL FUNCTIONALITY ==========
 const remarkModal = document.getElementById('remark-modal');
 const remarkText = document.getElementById('remark-text');
 const modalItemName = document.getElementById('modal-item-name');
-
 let activeRemarkItem = null;
 
-function closeModal() {
-    remarkModal.style.display = 'none';
-    activeRemarkItem = null;
+function updateRemarkButton(itemNum) {
+  const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
+  if (!btn) return;
+  const saved = localStorage.getItem(`at_remark_${itemNum}`);
+  btn.classList.toggle('has-remark', saved && saved.trim());
 }
 
-function updateRemarkButton(itemNum) {
-
-    const btn =
-        document.querySelector(
-            `.remark-btn[data-item="${itemNum}"]`
-        );
-
-    const remark =
-        localStorage.getItem(`remark_${itemNum}`);
-
-    btn.classList.toggle(
-        'has-remark',
-        remark && remark.trim()
-    );
-
+function closeModal() {
+  remarkModal.style.display = 'none';
+  activeRemarkItem = null;
 }
 
 document.querySelectorAll('.remark-btn').forEach(btn => {
+  const itemNum = btn.getAttribute('data-item');
+  updateRemarkButton(itemNum);
 
-    const itemNum = btn.dataset.item;
-
-    updateRemarkButton(itemNum);
-
-    btn.addEventListener('click', () => {
-
-        activeRemarkItem = itemNum;
-
-        const itemName =
-            document.querySelector(
-                `[data-item="${itemNum}"] .item-name`
-            ).textContent;
-
-        modalItemName.textContent = itemName;
-
-        remarkText.value =
-            localStorage.getItem(
-                `remark_${itemNum}`
-            ) || '';
-
-
-
-
-
-        remarkModal.style.display = 'flex';
-
-    });
-
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    activeRemarkItem = itemNum;
+    const nameCell = document.querySelector(`tr[data-item="${itemNum}"] .name-cell`);
+    modalItemName.textContent = nameCell ? nameCell.textContent.trim() : `Item ${itemNum}`;
+    remarkText.value = localStorage.getItem(`at_remark_${itemNum}`) || '';
+    remarkModal.style.display = 'flex';
+    remarkText.focus();
+  });
 });
 
-document.getElementById('modal-save')
-.addEventListener('click', () => {
-
-    localStorage.setItem(
-        `remark_${activeRemarkItem}`,
-        remarkText.value
-    );
-
+document.getElementById('modal-save').addEventListener('click', function() {
+  if (activeRemarkItem !== null) {
+    localStorage.setItem(`at_remark_${activeRemarkItem}`, remarkText.value);
     updateRemarkButton(activeRemarkItem);
-
-    closeModal();
-
+  }
+  closeModal();
 });
 
-document.getElementById('modal-cancel')
-.addEventListener('click', closeModal);
+document.getElementById('modal-cancel').addEventListener('click', closeModal);
 
-remarkModal.addEventListener('click', event => {
+remarkModal.addEventListener('click', function(e) {
+  if (e.target === remarkModal) {
+    closeModal();
+  }
+});
 
-    if (event.target === remarkModal) {
-        closeModal();
-    }
+// ========== EXPORT TO JSON FUNCTIONALITY ==========
+document.getElementById('submit-changes-button').addEventListener('click', function() {
+  const kitData = {
+    kitNumber: kit || "unknown",
+    kitType: "AT",
+    lastCheck: new Date().toISOString(),
+    items: []
+  };
 
+  items.forEach((item, index) => {
+    const itemNum = index + 1;
+    const checked = localStorage.getItem(`at_checked_${itemNum}`) === 'true';
+    const remark = localStorage.getItem(`at_remark_${itemNum}`) || '';
+    
+    kitData.items.push({
+      id: itemNum,
+      name: item.name,
+      checked: checked,
+      remark: remark
+    });
+  });
+
+  // Save to localStorage
+  localStorage.setItem(`at_kit_${kit}_data`, JSON.stringify(kitData));
+  
+  // Also log to console for debugging
+  console.log('Kit data saved:', kitData);
+  
+  // Show confirmation
+  alert('Check bevestigd! Data opgeslagen.');
 });
 
 </script>

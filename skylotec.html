@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <title>Skylotec Kit – Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -15,34 +14,9 @@
   </header>
   <div class="container">
     <table id="inventoryTable">
-      <thead>
-      </thead>
-      <tbody>
- 
-        <!-- ITEM 1 -->
-       <tr class="item-row" data-item="1">
-          <td class="name-cell">Skylotec Drill</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="1">📝</button>
-            </td>
-        </tr>
-        
-        <!-- ITEM 2 -->
-        <tr class="item-row" data-item="2">
-          <td class="name-cell">Skylotec Spare Battery Charged</td>
-            <td class="item-check">
-                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
-            </td>
-            <td class="item-remark">
-                <button class="remark-btn"
-                        data-item="2">📝</button>
-            </td>
-        </tr>
-
+      <thead></thead>
+      <tbody id="inventoryBody">
+        <!-- Items will be generated dynamically -->
       </tbody>
     </table>
   </div>
@@ -65,91 +39,71 @@
   </div>
 
   <script>
-    const checkboxes = document.querySelectorAll('.item-checkbox');
-    const expiryInputs = document.querySelectorAll('.item-expiry');
-    const allItemRows = document.querySelectorAll('.item-row');
+    // ========== DATA ARRAY - All items in one place ==========
+    const items = [
+      { name: "Skylotec Drill" },
+      { name: "Skylotec Spare Battery Charged" }
+    ];
 
-    function isDateExpired(monthString) {
-      if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {
-        return false;
-      }
+    // ========== INITIALIZATION ==========
+    const kit = new URLSearchParams(window.location.search).get("kit");
 
-      const match = monthString.match(/^(\d{4})-(\d{2})$/);
-      if (!match) {
-        return false;
-      }
+    // ========== RENDER ITEMS DYNAMICALLY ==========
+    const tbody = document.getElementById('inventoryBody');
+    items.forEach((item, index) => {
+      const itemNum = index + 1;
+      
+      const row = document.createElement('tr');
+      row.className = 'item-row';
+      row.setAttribute('data-item', itemNum);
+      
+      const nameCell = document.createElement('td');
+      nameCell.className = 'name-cell';
+      nameCell.textContent = item.name;
+      
+      const checkCell = document.createElement('td');
+      checkCell.className = 'item-check';
+      checkCell.innerHTML = '<input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />';
+      
+      const remarkCell = document.createElement('td');
+      remarkCell.className = 'item-remark';
+      remarkCell.innerHTML = `<button class="remark-btn" data-item="${itemNum}">📝</button>`;
+      
+      row.appendChild(nameCell);
+      row.appendChild(checkCell);
+      row.appendChild(remarkCell);
+      tbody.appendChild(row);
+    });
 
-      const year = Number(match[1]);
-      const month = Number(match[2]);
-
-      // Expiry is valid until the last day of the selected month.
-      const expiryDate = new Date(year, month, 0);
-      expiryDate.setHours(23, 59, 59, 999);
-
-      return expiryDate < new Date();
-    }
-
+    // ========== HELPER FUNCTIONS (NO EXPIRY LOGIC NEEDED) ==========
     function updateItemState(itemNum) {
-      const rows = document.querySelectorAll(`tr[data-item="${itemNum}"]`);
+      const row = document.querySelector(`tr[data-item="${itemNum}"]`);
       const checkbox = document.querySelector(`tr[data-item="${itemNum}"] .item-checkbox`);
-      const expiryInput = document.querySelector(`tr[data-item="${itemNum}"] .item-expiry`);
 
-      rows.forEach(row => {
-        row.classList.remove('checked', 'expired');
-      });
-
-      if (expiryInput) {
-        const expired = isDateExpired(expiryInput.value);
-
-        expiryInput.classList.toggle('expired', expired);
-        expiryInput.classList.toggle('valid', !expired);
-
-        if (expired) {
-          rows.forEach(row => row.classList.add('expired'));
-          return;
-        }
-      }
+      row.classList.remove('checked');
 
       if (checkbox && checkbox.checked) {
-        rows.forEach(row => row.classList.add('checked'));
+        row.classList.add('checked');
       }
     }
 
-    allItemRows.forEach(row => {
-      const itemNum = row.getAttribute('data-item');
-      updateItemState(itemNum);
-    });
-
-    expiryInputs.forEach(input => {
-      const itemNum = input.closest('tr').getAttribute('data-item');
-      const savedDate = localStorage.getItem(`expiry_${itemNum}`);
-
-      if (savedDate) {
-        input.value = savedDate;
-      }
-
-      updateItemState(itemNum);
-
-      input.addEventListener('change', function() {
-        localStorage.setItem(`expiry_${itemNum}`, this.value);
-        updateItemState(itemNum);
-      });
-    });
+    // ========== INITIALIZE CHECKBOXES ==========
+    const checkboxes = document.querySelectorAll('.item-checkbox');
 
     checkboxes.forEach(checkbox => {
       const itemNum = checkbox.closest('tr').getAttribute('data-item');
-      const savedState = localStorage.getItem(`checked_${itemNum}`);
+      const savedState = localStorage.getItem(`skylotec_checked_${itemNum}`);
 
       checkbox.checked = savedState === 'true';
       updateItemState(itemNum);
 
       checkbox.addEventListener('change', function() {
-        localStorage.setItem(`checked_${itemNum}`, String(this.checked));
+        localStorage.setItem(`skylotec_checked_${itemNum}`, String(this.checked));
         updateItemState(itemNum);
       });
     });
 
-    // Remark buttons
+    // ========== REMARK MODAL FUNCTIONALITY ==========
     const remarkModal = document.getElementById('remark-modal');
     const remarkText = document.getElementById('remark-text');
     const modalItemName = document.getElementById('modal-item-name');
@@ -158,7 +112,7 @@
     function updateRemarkButton(itemNum) {
       const btn = document.querySelector(`.remark-btn[data-item="${itemNum}"]`);
       if (!btn) return;
-      const saved = localStorage.getItem(`remark_${itemNum}`);
+      const saved = localStorage.getItem(`skylotec_remark_${itemNum}`);
       btn.classList.toggle('has-remark', saved && saved.trim());
     }
 
@@ -176,7 +130,7 @@
         activeRemarkItem = itemNum;
         const nameCell = document.querySelector(`tr[data-item="${itemNum}"] .name-cell`);
         modalItemName.textContent = nameCell ? nameCell.textContent.trim() : `Item ${itemNum}`;
-        remarkText.value = localStorage.getItem(`remark_${itemNum}`) || '';
+        remarkText.value = localStorage.getItem(`skylotec_remark_${itemNum}`) || '';
         remarkModal.style.display = 'flex';
         remarkText.focus();
       });
@@ -184,7 +138,7 @@
 
     document.getElementById('modal-save').addEventListener('click', function() {
       if (activeRemarkItem !== null) {
-        localStorage.setItem(`remark_${activeRemarkItem}`, remarkText.value);
+        localStorage.setItem(`skylotec_remark_${activeRemarkItem}`, remarkText.value);
         updateRemarkButton(activeRemarkItem);
       }
       closeModal();
@@ -197,31 +151,37 @@
         closeModal();
       }
     });
-    /* //////////////////////////////////////////////////////////// */
-    const layoutButton = document.getElementById('layout-button');
-    const layoutModal = document.getElementById('layout-modal');
-    const layoutClose = document.getElementById('layout-close');
 
-    function closeLayoutModal() {
-      layoutModal.style.display = 'none';
-    }
+    // ========== EXPORT TO JSON FUNCTIONALITY ==========
+    document.getElementById('submit-changes-button').addEventListener('click', function() {
+      const kitData = {
+        kitNumber: kit || "unknown",
+        kitType: "Skylotec",
+        lastCheck: new Date().toISOString(),
+        items: []
+      };
 
-    layoutButton.addEventListener('click', () => {
-      layoutModal.style.display = 'flex';
-    });
+      items.forEach((item, index) => {
+        const itemNum = index + 1;
+        const checked = localStorage.getItem(`skylotec_checked_${itemNum}`) === 'true';
+        const remark = localStorage.getItem(`skylotec_remark_${itemNum}`) || '';
+        
+        kitData.items.push({
+          id: itemNum,
+          name: item.name,
+          checked: checked,
+          remark: remark
+        });
+      });
 
-    layoutClose.addEventListener('click', closeLayoutModal);
-
-    layoutModal.addEventListener('click', (event) => {
-      if (event.target === layoutModal) {
-        closeLayoutModal();
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        closeLayoutModal();
-      }
+      // Save to localStorage
+      localStorage.setItem(`skylotec_kit_${kit}_data`, JSON.stringify(kitData));
+      
+      // Also log to console for debugging
+      console.log('Kit data saved:', kitData);
+      
+      // Show confirmation
+      alert('Check bevestigd! Data opgeslagen.');
     });
   </script>
 </body>

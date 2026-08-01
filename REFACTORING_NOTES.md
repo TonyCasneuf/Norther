@@ -80,19 +80,83 @@ When user clicks "Confirm Check" button, the system exports:
 
 Data is saved to localStorage as `firstaid_kit_{kitNumber}_data`.
 
+---
+
+## Other Kit Files Refactored (2026-08-01)
+
+The same efficient approach has been applied to the three other kit HTML files:
+
+### skylotec.html
+- **Before:** 228 lines
+- **After:** 188 lines  
+- **Reduction:** 40 lines (18% decrease)
+- **Items:** 2 (Skylotec Drill, Skylotec Spare Battery Charged)
+- **Format:** Simple single-row table (no expiry dates)
+
+### atkit.html  
+- **Before:** 251 lines
+- **After:** 212 lines
+- **Reduction:** 39 lines (16% decrease)
+- **Items:** 6 (Voltage Tester, Prove Unit, Loto Box, Lockout Locks, Lockout Accessories, HV Gloves)
+- **Format:** Simple single-row table (no expiry dates)
+
+### rescuekit.html
+- **Before:** 225 lines
+- **After:** 187 lines
+- **Reduction:** 38 lines (17% decrease)
+- **Items:** 1 (Cervical collar)
+- **Format:** Simple single-row table (no expiry dates)
+
+### Combined Results
+- **Total Before:** 704 lines (3 files)
+- **Total After:** 587 lines (3 files)
+- **Total Reduction:** 117 lines (17% overall decrease)
+
+### Key Differences from firstaid.html
+1. **No Expiry Date Logic:** These kits don't track expiry dates, simplifying the code
+2. **Single-Row Format:** Each item uses one table row instead of three
+3. **Simpler State Management:** Only checkbox state (checked/unchecked), no expired state
+4. **Unique localStorage Keys:** Each kit uses prefixed keys (skylotec_, at_, rescue_) to avoid conflicts
+
+### Common Features Across All Kits
+- ✅ Data-driven approach with JavaScript arrays
+- ✅ Dynamic table generation
+- ✅ Checkbox state persistence
+- ✅ Green highlighting when checked
+- ✅ Remark functionality with modal dialogs
+- ✅ JSON export on "Confirm Check"
+- ✅ LocalStorage data persistence
+
 ## Technical Details
 
 ### Browser Compatibility
 - Uses vanilla JavaScript (ES6+)
 - No external dependencies
 - LocalStorage for data persistence
-- Month input type for expiry dates
+- Month input type for expiry dates (firstaid.html only)
 
 ### Storage Keys
+
+#### First Aid Kit
 - `checked_{itemNum}`: Boolean string for checkbox state
 - `expiry_{itemNum}`: Date string in YYYY-MM format
 - `remark_{itemNum}`: Text string for remarks
 - `firstaid_kit_{kitNumber}_data`: Complete JSON export
+
+#### Skylotec Kit
+- `skylotec_checked_{itemNum}`: Boolean string for checkbox state
+- `skylotec_remark_{itemNum}`: Text string for remarks
+- `skylotec_kit_{kitNumber}_data`: Complete JSON export
+
+#### AT Kit
+- `at_checked_{itemNum}`: Boolean string for checkbox state
+- `at_remark_{itemNum}`: Text string for remarks
+- `at_kit_{kitNumber}_data`: Complete JSON export
+
+#### Rescue Kit
+- `rescue_checked_{itemNum}`: Boolean string for checkbox state
+- `rescue_remark_{itemNum}`: Text string for remarks
+- `rescue_kit_{kitNumber}_data`: Complete JSON export
 
 ## Future Improvements
 
@@ -101,15 +165,18 @@ Consider these enhancements:
 2. **Export to File:** Add button to download JSON as .json file
 3. **Import Previous Checks:** Load historical data for comparison
 4. **Validation Alerts:** Warn when expired items are found
-5. **Similar Refactoring:** Apply same pattern to `rescuekit.html` and `skylotec.html`
+5. **Unified Kit View:** Dashboard showing status of all 8 EFA kits at once
+6. **Export All Kits:** Single button to export all 4 sub-kits per EFA kit
 
 ## Migration Notes
 
-The new version maintains 100% compatibility with the original:
+The new versions maintain 100% compatibility with the original:
 - Same HTML classes and structure
-- Same localStorage keys
+- Same localStorage keys (for firstaid.html)
+- New prefixed keys for other kits (to avoid conflicts)
 - Same visual appearance
 - Same functionality
+- Enhanced with JSON export
 
 Users will see no difference except:
 - Faster page load (less HTML to parse)

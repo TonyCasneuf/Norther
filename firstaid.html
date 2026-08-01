@@ -16,7 +16,6 @@
     <table id="inventoryTable">
       <thead></thead>
       <tbody id="inventoryBody">
-        <!-- Items will be generated dynamically -->
       </tbody>
     </table>
   </div>
@@ -27,7 +26,7 @@
     <button type="button" id="submit-changes-button" class="action-btn">Confirm Check</button>
   </div>
 
-  <!-- Layout Modal -->
+  <!-- Layout laten zien -->
   <div id="layout-modal" class="modal-overlay" style="display:none;"
        role="dialog" aria-modal="true" aria-labelledby="layout-title">
     <div class="modal-box layout-modal-box">
@@ -44,7 +43,7 @@
     </div>
   </div>
 
-  <!-- Remark Modal -->
+  <!-- Remark kader tonen -->
   <div id="remark-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
     <div class="modal-box">
       <h3 id="modal-heading">Opmerking – <span id="modal-item-name"></span></h3>
@@ -57,7 +56,7 @@
   </div>
 
   <script>
-    // ========== DATA ARRAY - All items in one place ==========
+    // ========== DATA ARRAY - alle gegevens in een array geplaatst ==========
     const items = [
       { location: "Pouch A", name: "Oropharyngeal airway Size 2", qty: 1, expiry: "2026-12" },
       { location: "Pouch A", name: "Oropharyngeal airway Size 3", qty: 1, expiry: "2027-02" },

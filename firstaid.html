@@ -1012,7 +1012,7 @@
   <!-- Action buttons -->
   <div class="action-buttons">
     <button type="button" id="layout-button" class="action-btn">View Layout</button>
-    <button type="button" id="submit-changes-button" class="action-btn">Submit Changes</button>
+    <button type="button" id="submit-changes-button" class="action-btn">Confirm Check</button>
   </div>
 
   <!-- Layout Modal -->
@@ -1048,6 +1048,16 @@
     const checkboxes = document.querySelectorAll('.item-checkbox');
     const expiryInputs = document.querySelectorAll('.item-expiry');
     const allItemRows = document.querySelectorAll('.item-row');
+    
+    const kit = new URLSearchParams(window.location.search).get("kit");
+      document.getElementById("atLink").href =
+    `   atkit.html?kit=${kit}`;
+      document.getElementById("rescueLink").href =
+    `rescuekit.html?kit=${kit}`;
+      document.getElementById("firstAidLink").href =
+    `firstaid.html?kit=${kit}`;
+      document.getElementById("skylotecLink").href =
+    `skylotec.html?kit=${kit}`;
 
     function isDateExpired(monthString) {
       if (!monthString || monthString === 'N.A' || monthString === 'N.A.') {

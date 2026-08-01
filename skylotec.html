@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>First Aid Kit – Inventory</title>
+  <title>Skylotec Kit – Inventory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link rel="stylesheet" href="index.css">
@@ -10,7 +10,7 @@
 
 <body>
   <header>
-      <h1>First Aid Kit</h1>
+      <h1>Skylotec Kit</h1>
       <h2>Inventory</h2>
   </header>
   <div class="container">
@@ -20,25 +20,28 @@
       <tbody>
  
         <!-- ITEM 1 -->
-        <!-- Row 1 - Location & Name -->
-        <tr class="item-row" data-item="1">
-          <td class="location-cell" rowspan="3">
-            <span class="location-line"></span>
-            <span class="location-line">Separate</span>
-          </td>
-          <td class="name-cell">Cervical collar </td>
+       <tr class="item-row" data-item="1">
+          <td class="name-cell">Skylotec Drill</td>
+            <td class="item-check">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="1">📝</button>
+            </td>
         </tr>
-        <!-- Row 2 - Qty + Checkbox + Remark -->
-        <tr class="item-row" data-item="40">
-          <td class="qty-cell">Qty: 1 <span class="qty-check-wrap"><input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" /><button class="remark-btn" data-item="40" title="Opmerking toevoegen">📝</button></span></td>
+        
+        <!-- ITEM 2 -->
+        <tr class="item-row" data-item="2">
+          <td class="name-cell">Skylotec Spare Battery Charged</td>
+            <td class="item-check">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
+            </td>
+            <td class="item-remark">
+                <button class="remark-btn"
+                        data-item="2">📝</button>
+            </td>
         </tr>
-        <!-- Row 3 - Expiry Date -->
-        <tr class="item-row" data-item="40">
-          <td class="expiry-cell">
-            Expiry: N.A
-          </td>
-        </tr>
-
 
       </tbody>
     </table>
@@ -46,7 +49,7 @@
 
   <!-- Action buttons -->
   <div class="action-buttons">
-    <button type="button" id="submit-changes-button" class="action-btn">Submit Changes</button>
+    <button type="button" id="submit-changes-button" class="action-btn">Confirm Check</button>
   </div>
 
   <!-- Remark Modal -->

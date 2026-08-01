@@ -31,10 +31,9 @@
         </tr>
 
         <tr class="item-row" data-item="2">
-            <td class="item-name">Prove Unit</td>
+          <td class="name-cell">Prove Unit</td>
             <td class="item-check">
-                <input type="checkbox"
-                       class="item-checkbox">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
             </td>
             <td class="item-remark">
                 <button class="remark-btn"
@@ -43,10 +42,9 @@
         </tr>
 
         <tr class="item-row" data-item="3">
-            <td class="item-name">LOTO Box</td>
+          <td class="name-cell">Loto Box</td>
             <td class="item-check">
-                <input type="checkbox"
-                       class="item-checkbox">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
             </td>
             <td class="item-remark">
                 <button class="remark-btn"
@@ -54,11 +52,10 @@
             </td>
         </tr>
 
-        <tr class="item-row" data-item="4">
-            <td class="item-name">Lockout Locks</td>
+                <tr class="item-row" data-item="4">
+          <td class="name-cell">Lockout Locks</td>
             <td class="item-check">
-                <input type="checkbox"
-                       class="item-checkbox">
+                <input type="checkbox" class="item-checkbox" aria-label="Item gecontroleerd" />
             </td>
             <td class="item-remark">
                 <button class="remark-btn"
@@ -67,7 +64,7 @@
         </tr>
 
         <tr class="item-row" data-item="5">
-            <td class="item-name">Lockout Accessories</td>
+            <td class="name-cell">Lockout Accessories</td>
             <td class="item-check">
                 <input type="checkbox"
                        class="item-checkbox">
@@ -79,7 +76,7 @@
         </tr>
 
         <tr class="item-row" data-item="6">
-            <td class="item-name">HV Gloves</td>
+            <td class="name-cell">HV Gloves</td>
             <td class="item-check">
                 <input type="checkbox"
                        class="item-checkbox">
@@ -95,7 +92,7 @@
 
 <div class="action-buttons">
     <button type="button" id="submit-changes-button" class="action-btn">
-        Submit Changes
+        Confirm Check
     </button>
 </div>
 
@@ -213,6 +210,10 @@ document.querySelectorAll('.remark-btn').forEach(btn => {
             localStorage.getItem(
                 `remark_${itemNum}`
             ) || '';
+
+
+
+
 
         remarkModal.style.display = 'flex';
 

@@ -13,33 +13,33 @@
 
 <header>
     <h1>NORTHER</h1>
-    <h2>EFA KIT 1</h2>
+    <h2 id="kitTitle"></h2>
 </header>
 
 <div class="container">
 
-    <a class="kit" href="efa-kit-1-ATKit.html">
+    <a class="kit" id="atLink">
         <div class="kit-content">
             <h2>AT Kit</h2>
             <img src="Image/AT-Kit.jpeg" alt="AT Kit" class="kit-image-small" fetchpriority="high">
         </div>
     </a>
 
-    <a class="kit" href="efa-kit-1-RescueKit.html">
+    <a class="kit" id="rescueLink">
         <div class="kit-content">
             <h2>Rescue Kit</h2>
             <img src="Image/Rescue-Kit.jpeg" alt="Rescue Kit" class="kit-image-small" fetchpriority="high">
         </div>
     </a>
 
-    <a class="kit first-aid-kit" href="efa-kit-1-firstaid.html">
+    <a class="kit" id="firstAidLink">
         <div class="kit-content">
             <h2>First Aid Kit</h2>
             <img src="Image/First-Aid-Kit.jpeg" alt="First Aid Kit" class="kit-image-small" fetchpriority="high">
         </div>
     </a>
 
-    <a class="kit" href="efa-kit-1-skylotec.html">
+    <a class="kit" id="skylotecLink">
         <div class="kit-content">
             <h2>Skylotec Kit</h2>
             <img src="Image/Skylotec.jpeg" alt="Skylotec" class="kit-image-small" fetchpriority="high">
@@ -47,6 +47,24 @@
     </a>
 
 </div>
+
+<script>
+const kit = new URLSearchParams(window.location.search).get("kit");
+
+document.getElementById("kitTitle").textContent = `EFA KIT ${kit}`;
+
+document.getElementById("atLink").href =
+    `atkit.html?kit=${kit}`;
+
+document.getElementById("rescueLink").href =
+    `rescuekit.html?kit=${kit}`;
+
+document.getElementById("firstAidLink").href =
+    `firstaid.html?kit=${kit}`;
+
+document.getElementById("skylotecLink").href =
+    `skylotec.html?kit=${kit}`;
+</script>
 
 </body>
 
